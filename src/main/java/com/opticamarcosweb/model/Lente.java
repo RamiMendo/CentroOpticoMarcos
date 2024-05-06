@@ -43,7 +43,7 @@ public class Lente {
 	private Boolean esMultifocal;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="idFicha")
+	@JoinColumn(name="id_ficha")
 	private Ficha ficha;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="lente", orphanRemoval=true,fetch = FetchType.LAZY)
