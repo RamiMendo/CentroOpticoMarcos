@@ -35,10 +35,4 @@ public class FichaService{
 	public Ficha updateFicha(Ficha ficha) {
 		return fichaRepository.save(ficha);
 	}
-
-	public List<Ficha> getAllFichasByCriteria(Integer nombre, Boolean seniado, Boolean saldado, Date fechaDesde, Date fechaHasta, Double totalDesde, Double totalHasta) {
-		return null;
-		// TODO Auto-generated method stub
-		//return fichaRepository.getAllFichasByCriteria(nombre,seniado,saldado,fechaDesde,fechaHasta,totalDesde,totalHasta);
-	}
 }

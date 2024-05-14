@@ -72,15 +72,5 @@ public class FichaController {
 	public @ResponseBody Ficha updateFicha(Ficha ficha) {
 		return fichaService.updateFicha(ficha);
 	}
-	
-	//@GetMapping(value="filter/")
-	//@Operation(summary="Devuelve el listado por filtros de fichas opticas", description="Tiene parámetros de entrada, no está paginada y devuelve todas las fichas en base de datos", tags= {"Fichas"})
-	//@ApiResponses(value= {
-			//@ApiResponse(responseCode="200", description = "Se encontraron fichas en la base de datos!"),
-			//@ApiResponse(responseCode="404", description = "No se encotraron fichas en la base de datos!")
-	//})
-	//public @ResponseBody List<Ficha> getListaFichaByFilter(@RequestParam("nombre") Integer nombre, @RequestParam("seniado") Boolean seniado, @RequestParam("saldado") Boolean saldado, @RequestParam("fechaDesde") Date fechaDesde, @RequestParam("fechaHasta") Date fechaHasta, @RequestParam("totalDesde") Double totalDesde, @RequestParam("totalHasta") Double totalHasta){
-		
-		//return fichaService.getAllFichasByCriteria(nombre,seniado,saldado,fechaDesde,fechaHasta,totalDesde,totalHasta);
-	//}
+
 }
