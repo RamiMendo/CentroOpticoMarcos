@@ -30,7 +30,7 @@ import lombok.Setter;
 public class Lente {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="id_lente")
 	private Integer idLente;
 	@Column(nullable = false, name="es_lejos")

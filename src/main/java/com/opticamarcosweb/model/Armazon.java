@@ -25,7 +25,7 @@ import lombok.Setter;
 public class Armazon {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="id_armazon")
 	private Integer idArmazon;
 	@Column(nullable = false, length = 80)

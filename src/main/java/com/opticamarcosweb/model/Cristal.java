@@ -25,7 +25,7 @@ import lombok.Setter;
 public class Cristal {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="id_cristal")
 	private Integer idCristal;
 	@Column(nullable = false, length = 50)
