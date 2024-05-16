@@ -42,9 +42,9 @@ public class Lente {
 	@Column(nullable = false, name="es_multifocal")
 	private Boolean esMultifocal;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="id_ficha")
-	private Ficha ficha;
+//	@ManyToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name="id_ficha")
+//	private Ficha ficha;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="lente", orphanRemoval=true,fetch = FetchType.LAZY)
 	private Set<MedidaLente> medidasLentes = new HashSet<MedidaLente>();

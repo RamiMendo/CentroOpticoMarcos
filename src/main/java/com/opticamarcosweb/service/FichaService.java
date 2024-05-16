@@ -11,7 +11,7 @@ import com.opticamarcosweb.model.Ficha;
 import com.opticamarcosweb.repository.FichaRepository;
 
 @Service
-public class FichaService{
+public class FichaService {
 
 	@Autowired
 	private FichaRepository fichaRepository;

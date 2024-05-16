@@ -35,8 +35,8 @@ public class Cliente {
 	@Column(nullable = false, length = 80)
 	private String direccion;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="idFicha")
-	private Ficha ficha;
+//	@ManyToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name="idFicha")
+//	private Ficha ficha;
 
 }

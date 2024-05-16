@@ -31,8 +31,8 @@ public class Cristal {
 	@Column(nullable = false, length = 50)
 	private String nombre;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="idMedidaLente")
-	private MedidaLente medidaLente;
+//	@ManyToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name="idMedidaLente")
+//	private MedidaLente medidaLente;
 	
 }

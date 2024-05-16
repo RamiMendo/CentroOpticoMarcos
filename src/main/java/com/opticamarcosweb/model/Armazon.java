@@ -37,8 +37,8 @@ public class Armazon {
 	@Column(nullable = false, name="precio_tarjeta")
 	private Double precioTarjeta;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="idLente")
-	private Lente lente;
+//	@ManyToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name="idLente")
+//	private Lente lente;
 	
 }
