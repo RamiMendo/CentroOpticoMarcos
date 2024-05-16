@@ -42,30 +42,30 @@ public class Lente {
 	@Column(nullable = false, name="es_multifocal")
 	private Boolean esMultifocal;
 	
-//	@ManyToOne(cascade = CascadeType.ALL)
-//	@JoinColumn(name="id_ficha")
-//	private Ficha ficha;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="id_ficha")
+	private Ficha ficha;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="lente", orphanRemoval=true,fetch = FetchType.LAZY)
 	private Set<MedidaLente> medidasLentes = new HashSet<MedidaLente>();
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="lente", orphanRemoval=true, fetch = FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<Armazon> armazones = new HashSet<Armazon>();
 	
-	public void addMedidasLentes(MedidaLente medidaLente) {
-		medidasLentes.add(medidaLente);
-	}
-	
-	public void removeMedidasLentes(MedidaLente medidaLente) {
-		medidasLentes.remove(medidaLente);
-	}
-	
-	public void addArmazones(Armazon armazon) {
-		armazones.add(armazon);
-	}
-	
-	public void removeArmazones(Armazon armazon) {
-		armazones.remove(armazon);
-	}
+//	public void addMedidasLentes(MedidaLente medidaLente) {
+//		medidasLentes.add(medidaLente);
+//	}
+//
+//	public void removeMedidasLentes(MedidaLente medidaLente) {
+//		medidasLentes.remove(medidaLente);
+//	}
+//
+//	public void addArmazones(Armazon armazon) {
+//		armazones.add(armazon);
+//	}
+//
+//	public void removeArmazones(Armazon armazon) {
+//		armazones.remove(armazon);
+//	}
 		
 }
