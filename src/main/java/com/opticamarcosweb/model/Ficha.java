@@ -41,26 +41,26 @@ public class Ficha {
 	@Column(nullable = false)
 	private Double total;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="ficha", orphanRemoval=true, fetch = FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<Cliente> clientes = new HashSet<Cliente>();
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="ficha", orphanRemoval=true, fetch = FetchType.LAZY)
 	private Set<Lente> lentes = new HashSet<Lente>();
 	
-	public void addCliente(Cliente cliente) {
-		clientes.add(cliente);
-	}
-	
-	public void removeCliente(Cliente cliente) {
-		clientes.remove(cliente);
-	}
-	
-	public void addLente(Lente lente) {
-		lentes.add(lente);
-	}
-	
-	public void removeLente(Lente lente) {
-		lentes.remove(lente);
-	}
+//	public void addCliente(Cliente cliente) {
+//		clientes.add(cliente);
+//	}
+//
+//	public void removeCliente(Cliente cliente) {
+//		clientes.remove(cliente);
+//	}
+//
+//	public void addLente(Lente lente) {
+//		lentes.add(lente);
+//	}
+//
+//	public void removeLente(Lente lente) {
+//		lentes.remove(lente);
+//	}
 	
 }
