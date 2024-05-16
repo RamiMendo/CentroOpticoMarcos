@@ -50,18 +50,18 @@ public class MedidaLente {
 	@Column(nullable = false)
 	private Double precio;
 			
-//	@ManyToOne(cascade = CascadeType.ALL)
-//	@JoinColumn(name="idLente")
-//	private Lente lente;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="idLente")
+	private Lente lente;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="medidaLente", orphanRemoval=true,fetch = FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<Cristal> cristales = new HashSet<Cristal>();	
 	
-	public void addCristales(Cristal cristal) {
-		cristales.add(cristal);
-	}
-	
-	public void removeCristales(Cristal cristal) {
-		cristales.remove(cristal);
-	}
+//	public void addCristales(Cristal cristal) {
+//		cristales.add(cristal);
+//	}
+//
+//	public void removeCristales(Cristal cristal) {
+//		cristales.remove(cristal);
+//	}
 }
