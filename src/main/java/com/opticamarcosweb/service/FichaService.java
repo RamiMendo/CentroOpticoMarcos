@@ -1,6 +1,5 @@
 package com.opticamarcosweb.service;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,9 +22,10 @@ public class FichaService {
 	public Optional<Ficha> getFichaById(Integer IDFicha) {
 		return fichaRepository.findById(IDFicha);
 	}
-	
-	public Ficha addFicha(Ficha ficha) {
-		return fichaRepository.save(ficha);
+
+	public void addFicha(Ficha ficha){
+		ficha.setSaldo(ficha.getTotal() - ficha.getSenia());
+		fichaRepository.save(ficha);
 	}
 	
 	public void deleteFicha(Integer IDFicha) {
@@ -33,6 +33,7 @@ public class FichaService {
 	}
 	
 	public Ficha updateFicha(Ficha ficha) {
+
 		return fichaRepository.save(ficha);
 	}
 }
