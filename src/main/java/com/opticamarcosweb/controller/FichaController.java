@@ -31,7 +31,7 @@ public class FichaController {
     }
 
     @GetMapping(value="/{id}")
-    @Operation(summary="Devuelve una ficha apartir de ID ingresado", description="Tiene parámetros de entrada, está paginada y devuelve la ficha a partir del ID ingresado", tags= {"Fichas"})
+    @Operation(summary="Devuelve una ficha apartir de ID ingresado", description="Tiene parámetros de entrada y devuelve la ficha a partir del ID ingresado", tags= {"Fichas"})
     @ApiResponses(value= {
             @ApiResponse(responseCode="200", description = "Se encontraron fichas en bd!"),
             @ApiResponse(responseCode="404", description = "No se encotraron fichas en BD!")
