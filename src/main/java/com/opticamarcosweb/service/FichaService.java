@@ -3,6 +3,7 @@ package com.opticamarcosweb.service;
 import java.util.List;
 import java.util.Optional;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,7 +34,11 @@ public class FichaService {
 	}
 	
 	public Ficha updateFicha(Ficha ficha) {
-
 		return fichaRepository.save(ficha);
+	}
+
+    @Transactional
+	public void updateSaldoCero(Integer id){
+		fichaRepository.updateSaldoCero(id);
 	}
 }
