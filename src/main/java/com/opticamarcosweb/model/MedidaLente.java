@@ -3,6 +3,7 @@ package com.opticamarcosweb.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -48,7 +49,9 @@ public class MedidaLente {
 	@Column(nullable = false)
 	private Double precio;
 
-	@OneToOne
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_cristal")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) //Notacion para que ignore el cuerpo en la otra entidad
 	private Cristal cristal;
 
 }
