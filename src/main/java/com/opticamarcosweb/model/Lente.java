@@ -3,6 +3,7 @@ package com.opticamarcosweb.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,20 +24,25 @@ public class Lente {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="id_lente")
 	private Integer idLente;
+
 	@Column(nullable = false, name="es_lejos")
 	private Boolean esLejos;
+
 	@Column(nullable = false, name="es_cerca")
 	private Boolean esCerca;
+
 	@Column(nullable = false, name="es_bifocal")
 	private Boolean esBifocal;
+
 	@Column(nullable = false, name="es_multifocal")
 	private Boolean esMultifocal;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<MedidaLente> medidasLentes = new HashSet<MedidaLente>();
 
-	@OneToOne
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_armazon")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private Armazon armazon;
-
 
 }
