@@ -1,5 +1,6 @@
 package com.opticamarcosweb.controller;
 
+import com.opticamarcosweb.model.Cliente;
 import com.opticamarcosweb.model.Ficha;
 import com.opticamarcosweb.service.FichaService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -47,6 +48,12 @@ public class FichaController {
     @Operation(summary = "Devuelve una lista de fichas a partir de un filtro aplicado", description = "Debe enviar fechas(desde-hasta), lo mismo con el total, si fue señado y pagado ", tags = {"Fichas"})
     private @ResponseBody List<Ficha> getAllFichasByFilter(@PathVariable ("fechaDesde") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fechaDesde, @PathVariable("fechaHasta") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fechaHasta, @PathVariable("totalDesde") Double totalDesde, @PathVariable("totalHasta") Double totalHasta, @PathVariable("seniado") Boolean estaSeniado, @PathVariable("pagado") Boolean estaPagado){
         return fichaService.getAllFichasByFiltro(fechaDesde, fechaHasta, totalDesde, totalHasta, estaSeniado, estaPagado);
+    }
+
+    @GetMapping(path = "/cliente/", produces = "application/json")
+    @Operation(summary = "Busca todas las fichas a partir del id del cliente", description = "Debe enviar id del cliente", tags = {"Fichas"})
+    private @ResponseBody List<Ficha> getAllFichasByCliente(@RequestParam Integer idCliente) {
+        return fichaService.getAllFichasByidCliente(idCliente);
     }
 
     @PostMapping(value="/",consumes="application/json")
