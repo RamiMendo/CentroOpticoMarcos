@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -54,8 +55,15 @@ public class FichaController {
 
     @PutMapping(value="/", consumes="application/json")
     @Operation(summary="Permite modificar un ficha", description="Debe enviar el objeto a modificar, no se puede modificar el id", tags= {"Fichas"})
-    private @ResponseBody void updateFicha(@RequestBody Ficha ficha) {
-        fichaService.updateFicha(ficha);
+    private @ResponseBody Ficha updateFicha(@RequestBody Ficha ficha) {
+        return fichaService.updateFicha(ficha);
+    }
+
+    @PatchMapping(path="/pago/{id}", produces = "application/json")
+    @Operation(summary = "Modifica el saldo de la ficha", description = "Debe enviar el id de la ficha", tags = {"Fichas"})
+    private ResponseEntity<Void> updateSaldoFicha(@PathVariable("id") Integer id){
+        fichaService.updateSaldoCero(id);
+        return ResponseEntity.noContent().build();
     }
 
 }
