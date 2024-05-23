@@ -43,6 +43,7 @@ public class FichaController {
     }
 
     @GetMapping(path = "/filter/")
+    @Operation(summary = "Devuelve una lista de fichas a partir de un filtro aplicado", description = "Debe enviar fechas(desde-hasta), lo mismo con el total, si fue señado y pagado ", tags = {"Fichas"})
     private @ResponseBody List<Ficha> getAllFichasByFilter(@PathVariable("fechaDesde") LocalDate fechaDesde, @PathVariable("fechaHasta") LocalDate fechaHasta, @PathVariable("totalDesde") Double totalDesde, @PathVariable("totalHasta") Double totalHasta, @PathVariable("seniado") Boolean estaSeniado, @PathVariable("pagado") Boolean estaPagado){
         return fichaService.getAllFichasByFiltro(fechaDesde, fechaHasta, totalDesde, totalHasta, estaSeniado, estaPagado);
     }
