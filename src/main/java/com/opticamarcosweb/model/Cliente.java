@@ -28,15 +28,14 @@ public class Cliente {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="id_cliente")
 	private Integer idCliente;
+
 	@Column(nullable = false, length = 50)
 	private String nombre;
+
 	@Column(nullable = false)
 	private Double telefono;
+
 	@Column(nullable = false, length = 80)
 	private String direccion;
-	
-//	@ManyToOne(cascade = CascadeType.ALL)
-//	@JoinColumn(name="idFicha")
-//	private Ficha ficha;
 
 }
