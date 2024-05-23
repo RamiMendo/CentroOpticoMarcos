@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,6 +40,11 @@ public class FichaController {
     })
     private @ResponseBody Optional<Ficha> getFichaById(@PathVariable("id") Integer id) {
         return  fichaService.getFichaById(id);
+    }
+
+    @GetMapping(path = "/filter/")
+    private @ResponseBody List<Ficha> getAllFichasByFilter(@PathVariable("fechaDesde") LocalDate fechaDesde, @PathVariable("fechaHasta") LocalDate fechaHasta, @PathVariable("totalDesde") Double totalDesde, @PathVariable("totalHasta") Double totalHasta, @PathVariable("seniado") Boolean estaSeniado, @PathVariable("pagado") Boolean estaPagado){
+        return fichaService.getAllFichasByFiltro(fechaDesde, fechaHasta, totalDesde, totalHasta, estaSeniado, estaPagado);
     }
 
     @PostMapping(value="/",consumes="application/json")
