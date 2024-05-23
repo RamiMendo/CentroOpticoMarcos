@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,9 +43,9 @@ public class FichaController {
         return  fichaService.getFichaById(id);
     }
 
-    @GetMapping(path = "/filter/")
+    @GetMapping(path = "/filter/{fechaDesde}/{fechaHasta}/{totalDesde}/{totalHasta}/{seniado}/{pagado}")
     @Operation(summary = "Devuelve una lista de fichas a partir de un filtro aplicado", description = "Debe enviar fechas(desde-hasta), lo mismo con el total, si fue señado y pagado ", tags = {"Fichas"})
-    private @ResponseBody List<Ficha> getAllFichasByFilter(@PathVariable("fechaDesde") LocalDate fechaDesde, @PathVariable("fechaHasta") LocalDate fechaHasta, @PathVariable("totalDesde") Double totalDesde, @PathVariable("totalHasta") Double totalHasta, @PathVariable("seniado") Boolean estaSeniado, @PathVariable("pagado") Boolean estaPagado){
+    private @ResponseBody List<Ficha> getAllFichasByFilter(@PathVariable ("fechaDesde") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fechaDesde, @PathVariable("fechaHasta") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fechaHasta, @PathVariable("totalDesde") Double totalDesde, @PathVariable("totalHasta") Double totalHasta, @PathVariable("seniado") Boolean estaSeniado, @PathVariable("pagado") Boolean estaPagado){
         return fichaService.getAllFichasByFiltro(fechaDesde, fechaHasta, totalDesde, totalHasta, estaSeniado, estaPagado);
     }
 
