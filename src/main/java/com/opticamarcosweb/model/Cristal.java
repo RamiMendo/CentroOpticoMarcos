@@ -1,19 +1,14 @@
 package com.opticamarcosweb.model;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Getter
@@ -28,7 +23,11 @@ public class Cristal {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="id_cristal")
 	private Integer idCristal;
+
 	@Column(nullable = false, length = 50)
 	private String nombre;
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cristal")
+	private Set<MedidaLente> medidasLentes = new HashSet<>();
 
 }
