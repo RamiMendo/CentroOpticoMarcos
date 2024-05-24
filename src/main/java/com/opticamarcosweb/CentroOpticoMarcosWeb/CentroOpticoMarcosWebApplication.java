@@ -31,14 +31,5 @@ public class CentroOpticoMarcosWebApplication {
 		SpringApplication.run(CentroOpticoMarcosWebApplication.class, args);
 	}
 
-	@Bean
-	public OpenAPI customOpenAPI(@Value("V1") String AppVersion) {
-		return new OpenAPI().info(new Info().title("API Centro Optico Marcos")
-				.version(AppVersion)
-				.description("Centro Optico Marcos")
-				.termsOfService("http://google.com")
-				.license(new License().name("Apache 2.0").url("https://www.apache.org/licenses/LICENSE-2.0")));
-		
-	}
 
 }
