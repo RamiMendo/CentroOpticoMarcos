@@ -17,13 +17,13 @@ public class UsuarioController {
 
     @GetMapping(path = "/", produces = "application/json")
     @Operation(summary = "", description = "", tags = {"Usuarios"})
-    public @ResponseBody List<Usuario> getAllUsuarios(){
+    private @ResponseBody List<Usuario> getAllUsuarios(){
         return usuarioService.getAllUsuarios();
     }
 
     @PostMapping(path = "/", consumes = "application/json")
     @Operation(summary = "", description = "", tags = {"Usuarios"})
-    public void addUsuario(@RequestParam Usuario usuario){
-        usuarioService.addUsuario(usuario);
+    private @ResponseBody Usuario addUsuario(@RequestBody Usuario usuario){
+        return usuarioService.addUsuario(usuario);
     }
 }
