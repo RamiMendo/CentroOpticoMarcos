@@ -1,5 +1,6 @@
 package com.opticamarcosweb.controller;
 
+import com.opticamarcosweb.exceptions.FichaException;
 import com.opticamarcosweb.model.Cliente;
 import com.opticamarcosweb.model.Ficha;
 import com.opticamarcosweb.service.FichaService;
@@ -76,7 +77,7 @@ public class FichaController {
 
     @PatchMapping(path="/pago/{id}", produces = "application/json")
     @Operation(summary = "Modifica el saldo de la ficha", description = "Debe enviar el id de la ficha", tags = {"Fichas"})
-    private ResponseEntity<Void> updateSaldoFicha(@PathVariable("id") Integer id){
+    private ResponseEntity<Void> updateSaldoFicha(@PathVariable("id") Integer id) throws FichaException {
         fichaService.updateSaldoCero(id);
         return ResponseEntity.noContent().build();
     }
