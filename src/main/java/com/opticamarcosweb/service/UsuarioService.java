@@ -1,5 +1,6 @@
 package com.opticamarcosweb.service;
 
+import com.opticamarcosweb.model.Ficha;
 import com.opticamarcosweb.model.Usuario;
 import com.opticamarcosweb.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class UsuarioService {
         return usuarioRepository.findAll();
     }
 
-    public void addUsuario(Usuario usuario){
-        usuarioRepository.save(usuario);
+    public Usuario addUsuario(Usuario usuario){
+        return usuarioRepository.save(usuario);
     }
 }
