@@ -6,10 +6,9 @@ import io.swagger.v3.oas.models.info.License;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
 
 @Configuration
-public class Documentacion {
+public class DocumentacionConfig {
 
     @Bean
     public OpenAPI customOpenAPI(@Value("V1") String AppVersion) {
