@@ -5,7 +5,11 @@ import com.opticamarcosweb.model.Ficha;
 import com.opticamarcosweb.service.FichaService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,6 +28,15 @@ public class FichaController {
     @Operation(summary="Devuelve un listado de Fichas", description="No tiene parámetros de entrada, no está paginada y devuelve todos las fichas de bd", tags= {"Fichas"})
     private @ResponseBody List<Ficha> getListaFichas() {
         return fichaService.getAllFichas();
+    }
+
+    @GetMapping(path = "/paginado")
+    @Operation(summary = "Devuelve un listado de Fichas paginado", description = "Tiene parametros de entrada, esta paginada y devuelve las fichas paginadas", tags = {"Fichas"})
+    private ResponseEntity<Page<Ficha>> getListaFichasPageable(@RequestParam Integer page, @RequestParam Integer size) {
+        Pageable paginable = PageRequest.of(page, size);
+        Page<Ficha> pagina = fichaService.getAllFichasPageable(paginable);
+
+        return new ResponseEntity<>(pagina, HttpStatus.OK);
     }
 
     @GetMapping(value="/{id}")
