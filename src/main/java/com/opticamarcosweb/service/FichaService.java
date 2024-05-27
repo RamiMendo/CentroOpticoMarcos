@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import com.opticamarcosweb.exceptions.FichaException;
 import jakarta.transaction.Transactional;
@@ -52,9 +53,16 @@ public class FichaService {
 	}
 
 	public List<Ficha> getAllFichasByFiltro(LocalDate fechaDesde, LocalDate fechaHasta, Double totalDesde, Double totalHasta, Boolean estaSeniado, Boolean estaPagado){
-		List<Ficha> listaFichas = new ArrayList<Ficha>();
+		List<Ficha> listaFichas, listaFiltada = new ArrayList<Ficha>();
 		listaFichas = fichaRepository.getAllFichasByFiltro(fechaDesde, fechaHasta, totalDesde, totalHasta);
-		return listaFichas;
+
+		if(!estaSeniado)
+			listaFiltada = listaFichas.stream().filter((f) ->  f.getSenia()==0).collect(Collectors.toList());
+
+//		if(estaPagado)
+//			listaFiltada = listaFichas.stream().filter((f) ->  f.getSaldo()==0).collect(Collectors.toList());
+
+		return listaFiltada;
 	}
 
 	public List<Ficha> getAllFichasByidCliente(Integer idCliente){
