@@ -9,6 +9,8 @@ import java.util.stream.Collectors;
 import com.opticamarcosweb.exceptions.FichaException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,10 @@ public class FichaService {
 	
 	public List<Ficha> getAllFichas(){
 		return fichaRepository.findAll();
+	}
+
+	public Page<Ficha> getAllFichasPageable(Pageable pageable){
+		return fichaRepository.findAll(pageable);
 	}
 	
 	public Optional<Ficha> getFichaById(Integer IDFicha) {
