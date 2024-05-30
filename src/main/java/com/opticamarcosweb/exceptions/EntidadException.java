@@ -4,12 +4,12 @@ import lombok.Data;
 import org.springframework.http.HttpStatus;
 
 @Data
-public class FichaException extends Exception{
+public class EntidadException extends Exception{
 
     private String message;
     private HttpStatus httpStatus;
 
-    public FichaException(String message, HttpStatus httpStatus) {
+    public EntidadException(String message, HttpStatus httpStatus) {
         super(message);
         this.message = message;
         this.httpStatus = httpStatus;
