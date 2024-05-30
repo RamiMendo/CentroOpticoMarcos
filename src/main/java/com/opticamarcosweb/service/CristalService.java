@@ -35,8 +35,15 @@ public class CristalService {
 		return cristalRepository.save(cristal);
 	}
 	
-	public void deleteCristal(Integer IDCristal) {
-		cristalRepository.deleteById(IDCristal);
+	public void deleteCristal(Integer IDCristal) throws EntidadException {
+		Optional<Cristal> cristal = cristalRepository.findById(IDCristal);
+
+		if(cristal.isEmpty()){
+			throw new EntidadException("Cristal No Encontrado!", HttpStatus.NOT_FOUND);
+		}else{
+			cristalRepository.delete(cristal.get());
+		}
+
 	}
 	
 	public Cristal updateCristal(Cristal cristal) {
