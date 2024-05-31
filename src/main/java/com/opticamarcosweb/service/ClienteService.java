@@ -35,8 +35,14 @@ public class ClienteService {
 		return clienteRepository.save(cliente);
 	}
 	
-	public void deleteCliente(Integer id) {
-		clienteRepository.deleteById(id);
+	public void deleteCliente(Integer id) throws EntidadException {
+		Optional<Cliente> cliente = clienteRepository.findById(id);
+
+		if(cliente.isEmpty()){
+			throw new EntidadException("Cliente No Encontrado!", HttpStatus.NOT_FOUND);
+		}else{
+			clienteRepository.delete(cliente.get());
+		}
 	}
 	
 	public Cliente updateCliente(Cliente cliente) {
