@@ -42,7 +42,7 @@ public class ArmazonController {
 	}
 
 	@GetMapping(value="/{id}")
-	@Operation(summary="Devuelve un armazon apartir de ID ingresado", description="Tiene parámetros de entrada, está paginada y devuelve el armazon a partir del ID ingresado", tags= {"Armazones"})
+	@Operation(summary="Devuelve un armazon apartir de ID ingresado", description="Tiene parámetros de entrada y devuelve el armazon a partir del ID ingresado", tags= {"Armazones"})
 	private @ResponseBody Optional<Armazon> getArmazonById(@PathVariable("id") Integer id) {
 		return armazonService.getArmazonById(id);
 	}
