@@ -48,4 +48,14 @@ public class ClienteService {
 	public Cliente updateCliente(Cliente cliente) {
 		return clienteRepository.save(cliente);
 	}
+
+	public Double getSaldoCliente(Integer id) throws EntidadException {
+		Optional<Cliente> cliente = clienteRepository.findById(id);
+
+		if(cliente.isEmpty()){
+			throw new EntidadException("Cliente No Encontrado!", HttpStatus.NOT_FOUND);
+		}else{
+			return clienteRepository.getSaldoCliente(id);
+		}
+	}
 }
