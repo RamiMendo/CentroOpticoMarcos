@@ -31,7 +31,16 @@ public class ArmazonController {
 	private @ResponseBody List<Armazon> getListaArmazones() {
 		return armazonService.getAllArmazones();
 	}
-	
+
+	@GetMapping(path = "/paginado")
+	@Operation(summary = "", description = "", tags = {"Armazones"})
+	private ResponseEntity<Page<Armazon>> getPaginadoArmazon(@RequestParam Integer page, @RequestParam Integer size) {
+		Pageable pagina = PageRequest.of(page, size);
+		Page<Armazon> armazonPage = armazonService.getAllArmazonesPaginado(pagina);
+
+		return new ResponseEntity<>(armazonPage, HttpStatus.OK);
+	}
+
 	@GetMapping(value="/{id}")
 	@Operation(summary="Devuelve un armazon apartir de ID ingresado", description="Tiene parámetros de entrada, está paginada y devuelve el armazon a partir del ID ingresado", tags= {"Armazones"})
 	private @ResponseBody Optional<Armazon> getArmazonById(@PathVariable("id") Integer id) {
