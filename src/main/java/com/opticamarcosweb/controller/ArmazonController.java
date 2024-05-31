@@ -1,6 +1,12 @@
 package com.opticamarcosweb.controller;
 
+import com.opticamarcosweb.exceptions.EntidadException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.opticamarcosweb.model.Armazon;
@@ -22,7 +28,7 @@ public class ArmazonController {
 
 	@GetMapping
 	@Operation(summary="Devuelve un listado de Armazones", description="No tiene parámetros de entrada, no está paginada y devuelve todos los armazones de bd", tags= {"Armazones"})
-	public @ResponseBody List<Armazon> getListaArmazones() {
+	private @ResponseBody List<Armazon> getListaArmazones() {
 		return armazonService.getAllArmazones();
 	}
 	
