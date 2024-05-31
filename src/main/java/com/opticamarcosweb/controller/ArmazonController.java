@@ -55,8 +55,9 @@ public class ArmazonController {
 	
 	@DeleteMapping(path="/{id}", produces="application/json")
 	@Operation(summary="Borra un armazon de la Base de Datos", description="Debe enviar el id del armazon a borrar", tags= {"Armazones"})
-	private @ResponseBody void deleteArmazon(@PathVariable("id") Integer id) {
+	private ResponseEntity<Void> deleteArmazon(@PathVariable("id") Integer id) throws EntidadException {
 		armazonService.deleteArmazon(id);
+		return ResponseEntity.noContent().build();
 	}
 	
 	@PutMapping(path="/", produces="application/json")
