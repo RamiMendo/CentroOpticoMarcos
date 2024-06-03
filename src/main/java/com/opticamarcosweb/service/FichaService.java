@@ -40,8 +40,14 @@ public class FichaService {
 		return fichaRepository.save(ficha);
 	}
 	
-	public void deleteFicha(Integer IDFicha) {
-		fichaRepository.deleteById(IDFicha);
+	public void deleteFicha(Integer IDFicha) throws EntidadException {
+		Optional<Ficha> ficha = fichaRepository.findById(IDFicha);
+
+		if(ficha.isEmpty()) {
+			throw new EntidadException("Ficha no existe!", HttpStatus.NOT_FOUND);
+		}else{
+			fichaRepository.delete(ficha.get());
+		}
 	}
 	
 	public Ficha updateFicha(Ficha ficha) {
