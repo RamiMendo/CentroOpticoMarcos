@@ -55,13 +55,14 @@ public class FichaService {
 	}
 
     @Transactional
-	public void updateSaldoCero(Integer id) throws FichaException {
+	public void updateSaldoCero(Integer id) throws EntidadException {
 		Optional<Ficha> ficha = fichaRepository.findById(id);
 
 		if(ficha.isEmpty()) {
-			throw new FichaException("Ficha no existe!", HttpStatus.NOT_FOUND);
+			throw new EntidadException("Ficha no existe!", HttpStatus.NOT_FOUND);
+		}else{
+			fichaRepository.updateSaldoCero(id);
 		}
-		fichaRepository.updateSaldoCero(id);
 	}
 
 	public List<Ficha> getAllFichasByFiltro(LocalDate fechaDesde, LocalDate fechaHasta, Double totalDesde, Double totalHasta, Boolean estaSeniado, Boolean estaPagado){
