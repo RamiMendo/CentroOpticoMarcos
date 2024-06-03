@@ -81,4 +81,14 @@ public class FichaService {
 	public List<Ficha> getAllFichasByidCliente(Integer idCliente){
 		return fichaRepository.findAllByidCliente(idCliente);
 	}
+
+	public void deleteAllFichasByidCliente(Integer idCliente) throws EntidadException{
+		List<Ficha> fichasAEliminar = fichaRepository.findAllByidCliente(idCliente);
+
+		if(fichasAEliminar.isEmpty()){
+			new EntidadException("El cliente no tiene fichas!!", HttpStatus.NOT_FOUND);
+		}else{
+			fichaRepository.deleteAll(fichasAEliminar);
+		}
+	}
 }
