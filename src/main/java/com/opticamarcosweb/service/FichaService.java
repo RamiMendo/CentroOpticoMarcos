@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import com.opticamarcosweb.exceptions.FichaException;
+import com.opticamarcosweb.exceptions.EntidadException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -35,9 +35,9 @@ public class FichaService {
 		return fichaRepository.findById(IDFicha);
 	}
 
-	public void addFicha(Ficha ficha){
+	public Ficha addFicha(Ficha ficha){
 		ficha.setSaldo(ficha.getTotal() - ficha.getSenia());
-		fichaRepository.save(ficha);
+		return fichaRepository.save(ficha);
 	}
 	
 	public void deleteFicha(Integer IDFicha) {
