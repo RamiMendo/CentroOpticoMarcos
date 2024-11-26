@@ -1,6 +1,7 @@
 package com.opticamarcos.controller;
 
 import com.opticamarcos.exceptions.ObjectNotFoundException;
+import com.opticamarcos.model.dto.FichaDTO;
 import com.opticamarcos.model.entity.Ficha;
 import com.opticamarcos.service.FichaService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -117,8 +118,8 @@ public class FichaController {
     @Operation(summary="Agrega una ficha",
             description="Debe enviar el objeto ficha a ingresar",
             tags= {"Fichas"})
-    private @ResponseBody Ficha addFicha(@RequestBody Ficha ficha) {
-        return fichaService.addFicha(ficha);
+    private @ResponseBody Ficha addFicha(@RequestBody FichaDTO fichaDTO) {
+        return fichaService.addFicha(fichaDTO);
     }
 
     @DeleteMapping(produces="application/json")

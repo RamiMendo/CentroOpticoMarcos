@@ -7,6 +7,9 @@ import java.time.LocalDate;
 import java.util.*;
 
 import com.opticamarcos.exceptions.ObjectNotFoundException;
+import com.opticamarcos.mapper.FichaMapper;
+import com.opticamarcos.model.dto.FichaDTO;
+import com.opticamarcos.model.dto.MedidaDTO;
 import com.opticamarcos.model.entity.Lente;
 import com.opticamarcos.model.entity.Medida;
 import com.opticamarcos.repository.ClienteRepository;
@@ -37,7 +40,10 @@ public class FichaService {
 
 	@Autowired
 	private MedidaRepository medidaRepository;
-	
+
+	@Autowired
+	private FichaMapper fichaMapper;
+
 	public List<Ficha> getAllFichas(){
 		return fichaRepository.findAll();
 	}
@@ -74,7 +80,17 @@ public class FichaService {
 		return archivoPDF;
 	}
 
-	public Ficha addFicha(Ficha ficha) {
+	public Ficha addFicha(FichaDTO fichaDTO) {
+		Ficha ficha = fichaMapper.dtoToEntity(fichaDTO);
+		Integer total = fichaDTO.getLentes().stream()
+				.map(l -> (l.getMedidasLentes().stream()
+						.mapToInt(MedidaDTO::getPrecio)
+						.sum() + l.getArmazon().getPrecio()))
+				.mapToInt(Integer::intValue)
+				.sum();
+		ficha.setEstaImpreso(false);
+		ficha.setFecha(LocalDate.now());
+		ficha.setTotal(total);
 		ficha.setSaldo(ficha.getTotal() - ficha.getSenia());
 		return fichaRepository.save(ficha);
 	}
