@@ -1,4 +1,4 @@
-package com.opticamarcosweb.model;
+package com.opticamarcos.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;

@@ -1,4 +1,4 @@
-package com.opticamarcosweb.service;
+package com.opticamarcos.service;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -6,13 +6,12 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.*;
 
-import com.opticamarcosweb.exceptions.BadInputException;
-import com.opticamarcosweb.exceptions.ObjectNotFoundException;
-import com.opticamarcosweb.model.Lente;
-import com.opticamarcosweb.model.Medida;
-import com.opticamarcosweb.repository.ClienteRepository;
-import com.opticamarcosweb.repository.LenteRepository;
-import com.opticamarcosweb.repository.MedidaRepository;
+import com.opticamarcos.exceptions.ObjectNotFoundException;
+import com.opticamarcos.model.Lente;
+import com.opticamarcos.model.Medida;
+import com.opticamarcos.repository.ClienteRepository;
+import com.opticamarcos.repository.LenteRepository;
+import com.opticamarcos.repository.MedidaRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +20,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import com.opticamarcosweb.model.Ficha;
-import com.opticamarcosweb.repository.FichaRepository;
+import com.opticamarcos.model.Ficha;
+import com.opticamarcos.repository.FichaRepository;
 
 @Service
 public class FichaService {

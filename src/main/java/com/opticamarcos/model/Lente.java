@@ -1,7 +1,6 @@
-package com.opticamarcosweb.model;
+package com.opticamarcos.model;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

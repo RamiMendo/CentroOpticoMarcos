@@ -1,17 +1,17 @@
-package com.opticamarcosweb.service;
+package com.opticamarcos.service;
 
 import java.util.List;
 import java.util.Optional;
 
-import com.opticamarcosweb.exceptions.ObjectNotFoundException;
+import com.opticamarcos.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import com.opticamarcosweb.model.Cliente;
-import com.opticamarcosweb.repository.ClienteRepository;
+import com.opticamarcos.model.Cliente;
+import com.opticamarcos.repository.ClienteRepository;
 
 @Service
 public class ClienteService {

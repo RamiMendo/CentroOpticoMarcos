@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Predicate;
 
-import com.opticamarcos.interfaces.ArchivoPDF;
+import com.opticamarcos.interfaces.Archivo;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,7 +29,7 @@ import org.apache.pdfbox.util.Matrix;
 @AllArgsConstructor
 @Entity
 @Table(name="fichas")
-public class Ficha implements ArchivoPDF {
+public class Ficha implements Archivo {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

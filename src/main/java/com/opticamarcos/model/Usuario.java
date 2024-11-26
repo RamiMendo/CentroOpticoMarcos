@@ -1,12 +1,10 @@
-package com.opticamarcosweb.model;
+package com.opticamarcos.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.List;
 
 @Getter
 @Setter
@@ -32,17 +30,5 @@ public class Usuario {
 
     @Column(name = "habilitado", nullable = false)
     private Boolean enabled;
-
-//    @Column(name = "token_expirado", nullable = false)
-//    private boolean tokenExpirado;
-
-//    @ManyToMany(fetch = FetchType.LAZY)
-//    @JoinTable(
-//            name = "usuarios_roles",
-//            joinColumns = @JoinColumn(name = "id_usuario"),
-//            inverseJoinColumns = @JoinColumn(name = "id_rol")
-//    )
-//    private List<Rol> listaRoles;
-
 
 }

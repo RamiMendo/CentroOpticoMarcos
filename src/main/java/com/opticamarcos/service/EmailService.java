@@ -1,7 +1,7 @@
-package com.opticamarcosweb.service;
+package com.opticamarcos.service;
 
-import com.opticamarcosweb.exceptions.ObjectNotFoundException;
-import com.opticamarcosweb.model.Ficha;
+import com.opticamarcos.exceptions.ObjectNotFoundException;
+import com.opticamarcos.model.Ficha;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;

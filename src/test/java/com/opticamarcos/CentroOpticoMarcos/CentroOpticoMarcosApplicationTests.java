@@ -1,10 +1,10 @@
-package com.opticamarcosweb.CentroOpticoMarcosWeb;
+package com.opticamarcos.CentroOpticoMarcos;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CentroOpticoMarcosWebApplicationTests {
+class CentroOpticoMarcosApplicationTests {
 
 	@Test
 	void contextLoads() {
