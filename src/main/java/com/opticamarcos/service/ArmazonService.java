@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import com.opticamarcos.exceptions.ObjectNotFoundException;
+import com.opticamarcos.mapper.ArmazonMapper;
+import com.opticamarcos.model.dto.ArmazonDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,7 +20,10 @@ public class ArmazonService {
 
 	@Autowired
 	private ArmazonRepository armazonRepository;
-	
+
+	@Autowired
+	private ArmazonMapper armazonMapper;
+
 	public List<Armazon> getAllArmazones(){
 		return armazonRepository.findAll();
 	}
@@ -40,7 +45,8 @@ public class ArmazonService {
 		return armazonRepository.findArmazonesByPrecio(currentPage, regularDesde, regularHasta);
 	}
 
-	public Armazon addArmazon(Armazon armazon) {
+	public Armazon addArmazon(ArmazonDTO armazonDTO) {
+		Armazon armazon = armazonMapper.dtoToEntity(armazonDTO);
 		return armazonRepository.save(armazon);
 	}
 	

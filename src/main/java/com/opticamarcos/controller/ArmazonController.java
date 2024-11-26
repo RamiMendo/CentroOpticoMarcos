@@ -1,6 +1,7 @@
 package com.opticamarcos.controller;
 
 import com.opticamarcos.exceptions.ObjectNotFoundException;
+import com.opticamarcos.model.dto.ArmazonDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -54,8 +55,8 @@ public class ArmazonController {
 	
 	@PostMapping(consumes="application/json")
 	@Operation(summary="Agrega un armazon", description="Debe enviar el objeto armazon a ingresar", tags= {"Armazones"})
-	private @ResponseBody Armazon addArmazon(@RequestBody Armazon armazon) {
-		return armazonService.addArmazon(armazon);
+	private @ResponseBody Armazon addArmazon(@RequestBody ArmazonDTO armazonDTO) {
+		return armazonService.addArmazon(armazonDTO);
 	}
 	
 	@DeleteMapping(produces="application/json")
