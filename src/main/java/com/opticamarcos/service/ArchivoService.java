@@ -1,6 +1,6 @@
 package com.opticamarcos.service;
 
-import com.opticamarcos.model.Archivo;
+import com.opticamarcos.model.entity.Archivo;
 import com.opticamarcos.repository.ArchivoRepository;
 //import com.opticamarcos.util.BytesUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +9,6 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Optional;
-import java.util.zip.Deflater;
 
 @Service
 public class ArchivoService {

@@ -3,7 +3,7 @@ package com.opticamarcos.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.opticamarcos.model.Armazon;
+import com.opticamarcos.model.entity.Armazon;
 
 import java.util.List;
 

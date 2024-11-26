@@ -1,6 +1,6 @@
 package com.opticamarcos.repository;
 
-import com.opticamarcos.model.Ficha;
+import com.opticamarcos.model.entity.Ficha;
 
 import java.time.LocalDate;
 import java.util.List;

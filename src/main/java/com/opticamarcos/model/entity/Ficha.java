@@ -1,4 +1,4 @@
-package com.opticamarcos.model;
+package com.opticamarcos.model.entity;
 
 import java.awt.*;
 import java.io.IOException;

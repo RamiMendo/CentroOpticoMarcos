@@ -1,4 +1,4 @@
-package com.opticamarcos.model;
+package com.opticamarcos.model.entity;
 
 import java.util.HashSet;
 import java.util.Set;

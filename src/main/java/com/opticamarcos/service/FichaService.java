@@ -7,8 +7,8 @@ import java.time.LocalDate;
 import java.util.*;
 
 import com.opticamarcos.exceptions.ObjectNotFoundException;
-import com.opticamarcos.model.Lente;
-import com.opticamarcos.model.Medida;
+import com.opticamarcos.model.entity.Lente;
+import com.opticamarcos.model.entity.Medida;
 import com.opticamarcos.repository.ClienteRepository;
 import com.opticamarcos.repository.LenteRepository;
 import com.opticamarcos.repository.MedidaRepository;
@@ -20,7 +20,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import com.opticamarcos.model.Ficha;
+import com.opticamarcos.model.entity.Ficha;
 import com.opticamarcos.repository.FichaRepository;
 
 @Service

@@ -1,4 +1,4 @@
-package com.opticamarcos.model;
+package com.opticamarcos.model.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

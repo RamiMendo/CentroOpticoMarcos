@@ -1,6 +1,6 @@
 package com.opticamarcos.configuration;
 
-import com.opticamarcos.model.Usuario;
+import com.opticamarcos.model.entity.Usuario;
 import com.opticamarcos.repository.UsuarioRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;

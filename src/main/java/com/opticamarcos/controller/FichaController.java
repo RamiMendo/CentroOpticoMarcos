@@ -1,7 +1,7 @@
 package com.opticamarcos.controller;
 
 import com.opticamarcos.exceptions.ObjectNotFoundException;
-import com.opticamarcos.model.Ficha;
+import com.opticamarcos.model.entity.Ficha;
 import com.opticamarcos.service.FichaService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;

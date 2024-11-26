@@ -1,6 +1,6 @@
 package com.opticamarcos.repository;
 
-import com.opticamarcos.model.Armazon;
+import com.opticamarcos.model.entity.Armazon;
 
 import java.util.List;
 

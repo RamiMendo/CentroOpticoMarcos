@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.opticamarcos.model.Cliente;
+import com.opticamarcos.model.entity.Cliente;
 
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente,Integer>{

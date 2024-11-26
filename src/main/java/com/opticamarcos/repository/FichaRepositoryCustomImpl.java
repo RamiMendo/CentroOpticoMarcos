@@ -1,6 +1,6 @@
 package com.opticamarcos.repository;
 
-import com.opticamarcos.model.Ficha;
+import com.opticamarcos.model.entity.Ficha;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.criteria.CriteriaBuilder;

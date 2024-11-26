@@ -10,7 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import com.opticamarcos.model.Cliente;
+import com.opticamarcos.model.entity.Cliente;
 import com.opticamarcos.repository.ClienteRepository;
 
 @Service

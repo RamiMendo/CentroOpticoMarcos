@@ -10,7 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import com.opticamarcos.model.Cristal;
+import com.opticamarcos.model.entity.Cristal;
 import com.opticamarcos.repository.CristalRepository;
 
 @Service
