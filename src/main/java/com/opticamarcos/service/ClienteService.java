@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import com.opticamarcos.exceptions.ObjectNotFoundException;
+import com.opticamarcos.mapper.ClienteMapper;
+import com.opticamarcos.model.dto.ClienteDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,6 +20,9 @@ public class ClienteService {
 	
 	@Autowired
 	private ClienteRepository clienteRepository;
+
+	@Autowired
+	private ClienteMapper clienteMapper;
 	
 	public List<Cliente> getListaCliente(){	
 		return clienteRepository.findAll();
@@ -40,7 +45,8 @@ public class ClienteService {
 		return clienteRepository.findAllNoTieneFichas(pageable);
 	}
 
-	public Cliente addCliente(Cliente cliente) {
+	public Cliente addCliente(ClienteDTO clienteDTO) {
+		Cliente cliente = clienteMapper.dtoToEntity(clienteDTO);
 		return clienteRepository.save(cliente);
 	}
 	

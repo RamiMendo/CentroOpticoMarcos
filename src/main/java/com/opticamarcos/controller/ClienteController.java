@@ -3,6 +3,7 @@ package com.opticamarcos.controller;
 import java.util.List;
 
 import com.opticamarcos.exceptions.ObjectNotFoundException;
+import com.opticamarcos.model.dto.ClienteDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -54,8 +55,8 @@ public class ClienteController {
 	
 	@PostMapping(consumes="application/json")
 	@Operation(summary="Agrega un cliente", description="Debe enviar el objeto cliente a ingresar", tags= {"Clientes"})
-	private @ResponseBody Cliente addCliente(@RequestBody Cliente cliente) {
-		return clienteService.addCliente(cliente);
+	private @ResponseBody Cliente addCliente(@RequestBody ClienteDTO clienteDTO) {
+		return clienteService.addCliente(clienteDTO);
 	}
 	
 	@DeleteMapping(produces="application/json")
