@@ -43,7 +43,7 @@ public class CristalController {
 		return cristalService.findById(id);
 	}
 	
-	@PostMapping(produces="application/json")
+	@PostMapping(path = "/save", consumes="application/json")
 	@Operation(summary="Agrega un cristal", description="Debe enviar el objeto cristal a ingresar", tags= {"Cristales"})
 	private @ResponseBody Cristal addCristal(@RequestBody Cristal cristal) {
 		return cristalService.addCristal(cristal);
