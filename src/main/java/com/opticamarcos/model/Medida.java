@@ -1,8 +1,5 @@
 package com.opticamarcosweb.model;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -17,13 +14,13 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="medidas_lentes")
-public class MedidaLente {
+@Table(name="medidas")
+public class Medida {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="id_medida_lente")
-	private Integer idMedidaLente;
+	@Column(name="id_medida")
+	private Integer idMedida;
 
 	@Column(nullable = false)
 	private Double esferico;
@@ -47,11 +44,13 @@ public class MedidaLente {
 	private Boolean esMineral;
 
 	@Column(nullable = false)
-	private Double precio;
+	private Integer precio;
 
+	@Column(nullable = false)
+	private Boolean esOjoDerecho;
+
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) //Notacion para que ignore el cuerpo en la otra entidad
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_cristal")
-	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) //Notacion para que ignore el cuerpo en la otra entidad
+	@JoinColumn(name = "id_cristal", nullable = true)
 	private Cristal cristal;
-
 }

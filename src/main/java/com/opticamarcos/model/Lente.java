@@ -1,6 +1,7 @@
 package com.opticamarcosweb.model;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -38,11 +39,16 @@ public class Lente {
 	private Boolean esMultifocal;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Set<MedidaLente> medidasLentes = new HashSet<MedidaLente>();
+	@JoinTable(
+			name = "lentes_medidas",
+			joinColumns = @JoinColumn(name = "id_lente"),
+			inverseJoinColumns = @JoinColumn(name = "id_medida")
+	)
+	private Set<Medida> medidasLentes = new HashSet<>();
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_armazon")
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_armazon", nullable = true)
 	private Armazon armazon;
 
 }

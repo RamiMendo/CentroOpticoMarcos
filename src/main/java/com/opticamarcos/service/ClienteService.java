@@ -3,7 +3,7 @@ package com.opticamarcosweb.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.opticamarcosweb.exceptions.EntidadException;
+import com.opticamarcosweb.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -27,35 +27,32 @@ public class ClienteService {
 		return clienteRepository.findAll(pageable);
 	}
 	
-	public Optional<Cliente> getClienteById(Integer id){
-		return clienteRepository.findById(id);
+	public Cliente findById(Integer idCliente) throws ObjectNotFoundException {
+		Optional<Cliente> cliente = clienteRepository.findById(idCliente);
+
+		if(cliente.isEmpty())
+			throw new ObjectNotFoundException("NO SE ENCONTRO EL CLIENTE CON ID: " + idCliente, HttpStatus.NOT_FOUND);
+
+		return cliente.get();
+	}
+
+	public Page<Cliente> findAllNoTieneFichas(Pageable pageable){
+		return clienteRepository.findAllNoTieneFichas(pageable);
 	}
 
 	public Cliente addCliente(Cliente cliente) {
 		return clienteRepository.save(cliente);
 	}
 	
-	public void deleteCliente(Integer id) throws EntidadException {
-		Optional<Cliente> cliente = clienteRepository.findById(id);
-
-		if(cliente.isEmpty()){
-			throw new EntidadException("Cliente No Encontrado!", HttpStatus.NOT_FOUND);
-		}else{
-			clienteRepository.delete(cliente.get());
-		}
+	public void deleteCliente(Integer idCliente) throws ObjectNotFoundException {
+		clienteRepository.delete(findById(idCliente));
 	}
 	
 	public Cliente updateCliente(Cliente cliente) {
 		return clienteRepository.save(cliente);
 	}
 
-	public Double getSaldoCliente(Integer id) throws EntidadException {
-		Optional<Cliente> cliente = clienteRepository.findById(id);
-
-		if(cliente.isEmpty()){
-			throw new EntidadException("Cliente No Encontrado!", HttpStatus.NOT_FOUND);
-		}else{
-			return clienteRepository.getSaldoCliente(id);
-		}
+	public Double getSaldoCliente(Integer idCliente) throws ObjectNotFoundException {
+		return clienteRepository.getSaldoCliente(idCliente);
 	}
 }

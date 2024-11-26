@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -27,6 +29,20 @@ public class Usuario {
 
     @Column(name = "nombre", nullable = false)
     private String name;
+
+    @Column(name = "habilitado", nullable = false)
+    private Boolean enabled;
+
+//    @Column(name = "token_expirado", nullable = false)
+//    private boolean tokenExpirado;
+
+//    @ManyToMany(fetch = FetchType.LAZY)
+//    @JoinTable(
+//            name = "usuarios_roles",
+//            joinColumns = @JoinColumn(name = "id_usuario"),
+//            inverseJoinColumns = @JoinColumn(name = "id_rol")
+//    )
+//    private List<Rol> listaRoles;
 
 
 }
