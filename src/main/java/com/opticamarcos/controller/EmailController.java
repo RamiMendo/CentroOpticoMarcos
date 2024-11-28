@@ -1,6 +1,6 @@
 package com.opticamarcos.controller;
 
-import com.opticamarcos.exceptions.ObjectNotFoundException;
+import com.opticamarcos.exceptions.CustomException;
 import com.opticamarcos.service.EmailService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.mail.MessagingException;
@@ -19,7 +19,7 @@ public class EmailController {
             description = "Se pasas por parametro el numero de ficha a enviar",
             tags = {"Mailing"}
     )
-    public @ResponseBody void enviarEmail(@RequestParam Integer numeroFicha) throws MessagingException, ObjectNotFoundException {
+    public @ResponseBody void enviarEmail(@RequestParam Integer numeroFicha) throws MessagingException, CustomException {
         emailService.sendMailWithAttachment(numeroFicha);
     }
 

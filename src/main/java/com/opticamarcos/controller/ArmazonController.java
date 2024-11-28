@@ -1,6 +1,6 @@
 package com.opticamarcos.controller;
 
-import com.opticamarcos.exceptions.ObjectNotFoundException;
+import com.opticamarcos.exceptions.CustomException;
 import com.opticamarcos.model.dto.ArmazonDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -43,7 +43,7 @@ public class ArmazonController {
 
 	@GetMapping(value="/findById")
 	@Operation(summary="Devuelve un armazon apartir de ID ingresado", description="Tiene parámetros de entrada y devuelve el armazon a partir del ID ingresado", tags= {"Armazones"})
-	private @ResponseBody Armazon getArmazonById(@RequestParam Integer id) throws ObjectNotFoundException {
+	private @ResponseBody Armazon getArmazonById(@RequestParam Integer id) throws CustomException {
 		return armazonService.findById(id);
 	}
 
@@ -61,7 +61,7 @@ public class ArmazonController {
 	
 	@DeleteMapping(produces="application/json")
 	@Operation(summary="Borra un armazon de la Base de Datos", description="Debe enviar el id del armazon a borrar", tags= {"Armazones"})
-	private ResponseEntity<Void> deleteArmazon(@RequestParam Integer id) throws ObjectNotFoundException {
+	private ResponseEntity<Void> deleteArmazon(@RequestParam Integer id) throws CustomException {
 		armazonService.deleteArmazon(id);
 		return ResponseEntity.noContent().build();
 	}

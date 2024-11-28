@@ -1,6 +1,6 @@
 package com.opticamarcos.controller;
 
-import com.opticamarcos.exceptions.ObjectNotFoundException;
+import com.opticamarcos.exceptions.CustomException;
 import com.opticamarcos.model.dto.FichaDTO;
 import com.opticamarcos.model.entity.Ficha;
 import com.opticamarcos.service.FichaService;
@@ -53,7 +53,7 @@ public class FichaController {
     @Operation(summary="Devuelve una ficha apartir de ID ingresado",
             description="Tiene parámetros de entrada y devuelve la ficha a partir del ID ingresado",
             tags= {"Fichas"})
-    private @ResponseBody Ficha getFichaById(@RequestParam Integer id) throws ObjectNotFoundException {
+    private @ResponseBody Ficha getFichaById(@RequestParam Integer id) throws CustomException {
         return fichaService.findById(id);
     }
 
@@ -78,7 +78,7 @@ public class FichaController {
             description = "Se pasa por parametros el identificador de la ficha y si se desea sobreescribir.",
             tags = {"Fichas"}
     )
-    private ResponseEntity<?> getFichaFile(@RequestParam Integer id, @RequestParam Boolean sobreescribir) throws ObjectNotFoundException, IOException {
+    private ResponseEntity<?> getFichaFile(@RequestParam Integer id, @RequestParam Boolean sobreescribir) throws CustomException, IOException {
 
         File fichaArchivo = fichaService.getFichaFile(id, sobreescribir);
 
@@ -126,7 +126,7 @@ public class FichaController {
     @Operation(summary="Borra una ficha de la Base de Datos",
             description="Debe enviar el id del ficha a borrar",
             tags= {"Fichas"})
-    private ResponseEntity<Void> deleteFicha(@RequestParam Integer id) throws ObjectNotFoundException {
+    private ResponseEntity<Void> deleteFicha(@RequestParam Integer id) throws CustomException {
         fichaService.deleteFicha(id);
         return ResponseEntity.noContent().build();
     }
@@ -152,7 +152,7 @@ public class FichaController {
     @Operation(summary = "Modifica el cliente de una ficha en especifica",
             description = "Se pasan por parametro numero de ficha y de cliente",
             tags = {"Fichas"})
-    private ResponseEntity<Void> updateCliente(Integer idFicha, Integer idCliente) throws ObjectNotFoundException {
+    private ResponseEntity<Void> updateCliente(Integer idFicha, Integer idCliente) throws CustomException {
         fichaService.updateCliente(idFicha, idCliente);
         return ResponseEntity.noContent().build();
     }

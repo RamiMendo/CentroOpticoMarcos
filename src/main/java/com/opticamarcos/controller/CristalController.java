@@ -2,7 +2,7 @@ package com.opticamarcos.controller;
 
 import java.util.List;
 
-import com.opticamarcos.exceptions.ObjectNotFoundException;
+import com.opticamarcos.exceptions.CustomException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -39,7 +39,7 @@ public class CristalController {
 
 	@GetMapping(value="/findById")
 	@Operation(summary="Devuelve un cristal apartir de ID ingresado", description="Tiene parámetros de entrada, está paginada y devuelve el cristal a partir del ID ingresado", tags= {"Cristales"})
-	private @ResponseBody Cristal getCristalById(@RequestParam Integer id) throws ObjectNotFoundException {
+	private @ResponseBody Cristal getCristalById(@RequestParam Integer id) throws CustomException {
 		return cristalService.findById(id);
 	}
 	
@@ -51,7 +51,7 @@ public class CristalController {
 	
 	@DeleteMapping(produces="application/json")
 	@Operation(summary="Borra un cristal de la Base de Datos", description="Debe enviar el id del cristal a borrar", tags= {"Cristales"})
-	private ResponseEntity<Void> deleteCristal(@RequestParam Integer id) throws ObjectNotFoundException {
+	private ResponseEntity<Void> deleteCristal(@RequestParam Integer id) throws CustomException {
 		cristalService.deleteCristal(id);
 		return ResponseEntity.noContent().build();
 	}

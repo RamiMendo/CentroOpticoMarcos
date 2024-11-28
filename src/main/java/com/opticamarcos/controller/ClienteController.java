@@ -2,7 +2,7 @@ package com.opticamarcos.controller;
 
 import java.util.List;
 
-import com.opticamarcos.exceptions.ObjectNotFoundException;
+import com.opticamarcos.exceptions.CustomException;
 import com.opticamarcos.model.dto.ClienteDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -40,7 +40,7 @@ public class ClienteController {
 
 	@GetMapping(value="/findById")
 	@Operation(summary="Devuelve un cliente apartir de ID ingresado", description="Tiene parámetros de entrada, devuelve el cliente a partir del ID ingresado", tags= {"Clientes"})
-	private @ResponseBody Cliente getClienteByID(@RequestParam Integer id) throws ObjectNotFoundException {
+	private @ResponseBody Cliente getClienteByID(@RequestParam Integer id) throws CustomException {
 		return clienteService.findById(id);
 	}
 
@@ -61,7 +61,7 @@ public class ClienteController {
 	
 	@DeleteMapping(produces="application/json")
 	@Operation(summary="Borra un cliente de la Base de Datos", description="Debe enviar el id del cliente a borrar", tags= {"Clientes"})
-	private ResponseEntity<Void> deleteCliente(@RequestParam Integer id) throws ObjectNotFoundException {
+	private ResponseEntity<Void> deleteCliente(@RequestParam Integer id) throws CustomException {
 		clienteService.deleteCliente(id);
 		return ResponseEntity.noContent().build();
 	}
