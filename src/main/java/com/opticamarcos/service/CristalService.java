@@ -3,7 +3,7 @@ package com.opticamarcos.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.opticamarcos.exceptions.ObjectNotFoundException;
+import com.opticamarcos.exceptions.CustomException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -27,20 +27,15 @@ public class CristalService {
 		return cristalRepository.findAll(pageable);
 	}
 	
-	public Cristal findById(Integer idCristal) throws ObjectNotFoundException {
-		Optional<Cristal> cristal = cristalRepository.findById(idCristal);
-
-		if(cristal.isEmpty())
-			throw new ObjectNotFoundException("NO SE ENCONTRO EL CRISTAL CON ID: " + idCristal, HttpStatus.NOT_FOUND);
-
-		return cristal.get();
+	public Cristal findById(Integer idCristal) throws CustomException {
+		return cristalRepository.findById(idCristal).orElse(null);
 	}
 	
 	public Cristal addCristal(Cristal cristal) {
 		return cristalRepository.save(cristal);
 	}
 	
-	public void deleteCristal(Integer idCristal) throws ObjectNotFoundException {
+	public void deleteCristal(Integer idCristal) throws CustomException {
 		cristalRepository.delete(findById(idCristal));
 	}
 	

@@ -1,6 +1,6 @@
 package com.opticamarcos.service;
 
-import com.opticamarcos.exceptions.ObjectNotFoundException;
+import com.opticamarcos.exceptions.CustomException;
 import com.opticamarcos.model.entity.Ficha;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
@@ -27,7 +27,7 @@ public class EmailService {
         this.mailMessage = mailMessage;
     }
 
-    public void sendMailWithAttachment(Integer numeroFicha) throws MessagingException, ObjectNotFoundException {
+    public void sendMailWithAttachment(Integer numeroFicha) throws MessagingException, CustomException {
         MimeMessage mimeMessage = mailSender.createMimeMessage();
         MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
 

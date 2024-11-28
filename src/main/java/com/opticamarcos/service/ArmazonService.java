@@ -3,7 +3,7 @@ package com.opticamarcos.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.opticamarcos.exceptions.ObjectNotFoundException;
+import com.opticamarcos.exceptions.CustomException;
 import com.opticamarcos.mapper.ArmazonMapper;
 import com.opticamarcos.model.dto.ArmazonDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,13 +32,8 @@ public class ArmazonService {
 		return armazonRepository.findAll(pageable);
 	}
 	
-	public Armazon findById(Integer id) throws ObjectNotFoundException {
-		Optional<Armazon> armazon = armazonRepository.findById(id);
-
-		if(armazon.isEmpty())
-			throw new ObjectNotFoundException("NO SE ENCONTRO EL ARMAZON CON ID: " + id, HttpStatus.NOT_FOUND);
-
-		return armazon.get();
+	public Armazon findById(Integer id) throws CustomException {
+		return armazonRepository.findById(id).orElse(null);
 	}
 
 	public List<Armazon> findArmazonesByPrecio(Integer currentPage, Double regularDesde, Double regularHasta) {
@@ -50,7 +45,7 @@ public class ArmazonService {
 		return armazonRepository.save(armazon);
 	}
 	
-	public void deleteArmazon(Integer id) throws ObjectNotFoundException {
+	public void deleteArmazon(Integer id) throws CustomException {
 		armazonRepository.delete(findById(id));
 	}
 	

@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.*;
 
-import com.opticamarcos.exceptions.ObjectNotFoundException;
+import com.opticamarcos.exceptions.CustomException;
 import com.opticamarcos.mapper.FichaMapper;
 import com.opticamarcos.model.dto.FichaDTO;
 import com.opticamarcos.model.dto.MedidaDTO;
@@ -52,17 +52,12 @@ public class FichaService {
 		return fichaRepository.findAllByFechas(pageable, fechaDesde, fechaHasta);
 	}
 	
-	public Ficha findById(Integer idFicha) throws ObjectNotFoundException {
-		Optional<Ficha> ficha = fichaRepository.findById(idFicha);
-
-		if (ficha.isEmpty())
-			throw new ObjectNotFoundException("NO SE ENCONTRO LA FICHA " + idFicha + "!!", HttpStatus.NOT_FOUND);
-
-		return ficha.get();
+	public Ficha findById(Integer idFicha) throws CustomException {
+		return fichaRepository.findById(idFicha).orElse(null);
 	}
 
 	@Transactional
-	public File getFichaFile(Integer idFicha, Boolean sobreescribir) throws IOException, ObjectNotFoundException {
+	public File getFichaFile(Integer idFicha, Boolean sobreescribir) throws IOException, CustomException {
 		Ficha ficha = findById(idFicha);
 
 		if (!ficha.getEstaImpreso()||sobreescribir){
@@ -95,7 +90,7 @@ public class FichaService {
 		return fichaRepository.save(ficha);
 	}
 	
-	public void deleteFicha(Integer idFicha) throws ObjectNotFoundException {
+	public void deleteFicha(Integer idFicha) throws CustomException {
 		Ficha ficha = findById(idFicha);
 		fichaRepository.delete(ficha);
 	}
@@ -118,7 +113,7 @@ public class FichaService {
 	}
 
 	@Transactional
-	public void updateCliente(Integer idFicha, Integer idCliente) throws ObjectNotFoundException {
+	public void updateCliente(Integer idFicha, Integer idCliente) throws CustomException {
 		findById(idFicha);
 
 		if(clienteRepository.findById(idCliente).isPresent())

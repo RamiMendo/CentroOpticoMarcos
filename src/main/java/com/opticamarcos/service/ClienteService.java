@@ -3,7 +3,7 @@ package com.opticamarcos.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.opticamarcos.exceptions.ObjectNotFoundException;
+import com.opticamarcos.exceptions.CustomException;
 import com.opticamarcos.mapper.ClienteMapper;
 import com.opticamarcos.model.dto.ClienteDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,13 +32,8 @@ public class ClienteService {
 		return clienteRepository.findAll(pageable);
 	}
 	
-	public Cliente findById(Integer idCliente) throws ObjectNotFoundException {
-		Optional<Cliente> cliente = clienteRepository.findById(idCliente);
-
-		if(cliente.isEmpty())
-			throw new ObjectNotFoundException("NO SE ENCONTRO EL CLIENTE CON ID: " + idCliente, HttpStatus.NOT_FOUND);
-
-		return cliente.get();
+	public Cliente findById(Integer idCliente) throws CustomException {
+		return clienteRepository.findById(idCliente).orElse(null);
 	}
 
 	public Page<Cliente> findAllNoTieneFichas(Pageable pageable){
@@ -50,7 +45,7 @@ public class ClienteService {
 		return clienteRepository.save(cliente);
 	}
 	
-	public void deleteCliente(Integer idCliente) throws ObjectNotFoundException {
+	public void deleteCliente(Integer idCliente) throws CustomException {
 		clienteRepository.delete(findById(idCliente));
 	}
 	
@@ -58,7 +53,7 @@ public class ClienteService {
 		return clienteRepository.save(cliente);
 	}
 
-	public Double getSaldoCliente(Integer idCliente) throws ObjectNotFoundException {
+	public Double getSaldoCliente(Integer idCliente) throws CustomException {
 		return clienteRepository.getSaldoCliente(idCliente);
 	}
 }
