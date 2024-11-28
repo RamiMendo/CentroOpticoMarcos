@@ -13,8 +13,8 @@ import java.io.FileNotFoundException;
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 //RENDERIZA LA EXCEPCION DE LA FORMA QUE YO QUIERO A PARTIR DE LO QUE PONGO COMO MENSAJE.
-    @ExceptionHandler(value = {ObjectNotFoundException.class})
-    public ResponseEntity<Object> handleFichaNotFound(ObjectNotFoundException e, WebRequest request) {
+    @ExceptionHandler(value = {CustomException.class})
+    public ResponseEntity<Object> handleFichaNotFound(CustomException e, WebRequest request) {
         String error = e.getMessage();
         return handleExceptionInternal(e, error, new HttpHeaders(), e.getHttpStatus(), request);
     }
@@ -24,12 +24,5 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         String error = e.getMessage();
         return handleExceptionInternal(e, error, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
     }
-
-    @ExceptionHandler(value = {BadInputException.class})
-    public ResponseEntity<Object> handleBadInput(BadInputException e, WebRequest request) {
-        String error = e.getMessage();
-        return handleExceptionInternal(e, error, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
-    }
-
 
 }
