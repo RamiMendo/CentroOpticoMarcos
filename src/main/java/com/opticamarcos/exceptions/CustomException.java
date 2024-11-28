@@ -4,7 +4,7 @@ import lombok.Data;
 import org.springframework.http.HttpStatus;
 
 @Data
-public abstract class CustomException extends Exception{
+public class CustomException extends Exception{
 
     private String message;
     private HttpStatus httpStatus;
