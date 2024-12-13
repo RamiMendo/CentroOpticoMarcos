@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet" href="../../static/menu/styles.css" th:href="@{/menu/styles.css}">
+</head>
+<body>
+    <h1>Menu</h1>
+    <hr id="hr-subtitulo">
+    <div id="container-botones">
+        <a role="button" class="boton-menu" th:href="@{/ficha}"><img th:src="@{/menu/images/icons8-portapapeles-100.png}" alt="">Fichas</a>
+        <a role="button" class="boton-menu" th:href="@{/cliente}"><img th:src="@{/menu/images/icons8-clientes-100.png}" alt="">Clientes</a>
+        <a role="button" class="boton-menu" th:href="@{/cristal}"><img th:src="@{/menu/images/icons8-crystal-100.png}" alt="">Cristales</a>
+        <a role="button" class="boton-menu" th:href="@{/armazon}"><img th:src="@{/menu/images/icons8-gafas-100.png}" alt="">Armazones</a>
+    </div>
+</body>
+</html>

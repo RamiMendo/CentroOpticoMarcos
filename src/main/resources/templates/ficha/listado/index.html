@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Fichas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a role="button" id="boton-volver" href="../Menu/index.html"><img id="imagen-volver" src="images/icons8-atrás-64.png" alt="">Volver al Menú</a>
+    <h1 id="titulo-pagina">Lista Fichas Opticas</h1>
+    <hr id="hr-underline">
+
+    <div id="container-table">
+        <div id="container-cabeza">
+            <button class="boton-cabeza" id="boton-filtros"><img id="imagen-filtro" src="images/icons8-filtrar-48.png" alt=""><span>Filtros</span></button>
+            <div id="container-input">
+                <input id="input-ficha" type="text" placeholder="Buscar Cliente">
+                <img id="imagen-lupa" src="images/baseline_search_white_36dp.png" alt="">
+            </div>
+            <button class="boton-cabeza" id="boton-pagar"><span>Marcar como pago</span></button>
+        </div>
+
+        <div id="wrapper">
+            <table>
+                <thead>
+                    <tr id="tr-cabeza">
+                        <th id="th-input"><input id="input-checkbox" type="checkbox"></th>
+                        <th id="th-ficha">Ficha</th>
+                        <th id="th-fecha">Fecha De Entrega</th>
+                        <th id="th-cliente">Cliente</th>
+                        <th id="th-seña">Señado</th>
+                        <th id="th-saldo">Saldo</th>
+                        <th id="th-total">Total</th>
+                        <th id="th-editar" class="th-accion"></th>
+                        <th id="th-eliminar" class="th-accion"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="tr-detalle">
+                        <td><input type="checkbox"></td>
+                        <td>#7777</td>
+                        <td>14/07/2021</td>
+                        <td>Conor McGregor</td>
+                        <td><input type="checkbox"></td>
+                        <td>120</td>
+                        <td>700</td>
+                        <td class="td-editar"><button class="boton-tabla boton-editar"><img class="imagen-editar" src="images/icons8-editar-48.png" alt=""></button></td>
+                        <td class="td-elimnar"><button class="boton-tabla boton-eliminar"><img class="imagen-eliminar" src="images/icons8-basura-48.png" alt=""></button></td>
+                    </tr>
+                    <tr class="tr-detalle">
+                        <td><input type="checkbox"></td>
+                        <td>#99</td>
+                        <td>12/08/2022</td>
+                        <td>Conor McGregor</td>
+                        <td><input type="checkbox"></td>
+                        <td>20</td>
+                        <td>40</td>
+                        <td class="td-editar"><button class="boton-tabla boton-editar"><img class="imagen-editar" src="images/icons8-editar-48.png" alt=""></button></td>
+                        <td class="td-elimnar"><button class="boton-tabla boton-eliminar"><img class="imagen-eliminar" src="images/icons8-basura-48.png" alt=""></button></td>
+                    </tr>
+                    <!-- <tr class="tr-detalle">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="td-editar"><button class="boton-tabla boton-editar"><img class="imagen-editar" src="images/icons8-editar-48.png" alt=""></button></td>
+                        <td class="td-elimnar"><button class="boton-tabla boton-eliminar"><img class="imagen-eliminar" src="images/icons8-basura-48.png" alt=""></button></td>
+                    </tr>
+                    <tr class="tr-detalle">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="td-editar"><button class="boton-tabla boton-editar"><img class="imagen-editar" src="images/icons8-editar-48.png" alt=""></button></td>
+                        <td class="td-elimnar"><button class="boton-tabla boton-eliminar"><img class="imagen-eliminar" src="images/icons8-basura-48.png" alt=""></button></td>
+                    </tr>
+                    <tr class="tr-detalle">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="td-editar"><button class="boton-tabla boton-editar"><img class="imagen-editar" src="images/icons8-editar-48.png" alt=""></button></td>
+                        <td class="td-elimnar"><button class="boton-tabla boton-eliminar"><img class="imagen-eliminar" src="images/icons8-basura-48.png" alt=""></button></td>
+                    </tr>
+                    <tr class="tr-detalle">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="td-editar"><button class="boton-tabla boton-editar"><img class="imagen-editar" src="images/icons8-editar-48.png" alt=""></button></td>
+                        <td class="td-elimnar"><button class="boton-tabla boton-eliminar"><img class="imagen-eliminar" src="images/icons8-basura-48.png" alt=""></button></td>
+                    </tr>  -->
+                    <!-- <tr class="tr-detalle">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="td-editar"><button class="boton-tabla boton-editar"><img class="imagen-editar" src="images/icons8-editar-48.png" alt=""></button></td>
+                        <td class="td-elimnar"><button class="boton-tabla boton-eliminar"><img class="imagen-eliminar" src="images/icons8-basura-48.png" alt=""></button></td>
+                    </tr>
+                    <tr class="tr-detalle">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="td-editar"><button class="boton-tabla boton-editar"><img class="imagen-editar" src="images/icons8-editar-48.png" alt=""></button></td>
+                        <td class="td-elimnar"><button class="boton-tabla boton-eliminar"><img class="imagen-eliminar" src="images/icons8-basura-48.png" alt=""></button></td>
+                    </tr>
+                    <tr class="tr-detalle">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="td-editar"><button class="boton-tabla boton-editar"><img class="imagen-editar" src="images/icons8-editar-48.png" alt=""></button></td>
+                        <td class="td-elimnar"><button class="boton-tabla boton-eliminar"><img class="imagen-eliminar" src="images/icons8-basura-48.png" alt=""></button></td>
+                    </tr>
+                    <tr class="tr-detalle">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="td-editar"><button class="boton-tabla boton-editar"><img class="imagen-editar" src="images/icons8-editar-48.png" alt=""></button></td>
+                        <td class="td-elimnar"><button class="boton-tabla boton-eliminar"><img class="imagen-eliminar" src="images/icons8-basura-48.png" alt=""></button></td>
+                    </tr>
+                    <tr class="tr-detalle">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="td-editar"><button class="boton-tabla boton-editar"><img class="imagen-editar" src="images/icons8-editar-48.png" alt=""></button></td>
+                        <td class="td-elimnar"><button class="boton-tabla boton-eliminar"><img class="imagen-eliminar" src="images/icons8-basura-48.png" alt=""></button></td>
+                    </tr>
+                    <tr class="tr-detalle">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="td-editar"><button class="boton-tabla boton-editar"><img class="imagen-editar" src="images/icons8-editar-48.png" alt=""></button></td>
+                        <td class="td-elimnar"><button class="boton-tabla boton-eliminar"><img class="imagen-eliminar" src="images/icons8-basura-48.png" alt=""></button></td>
+                    </tr>
+                    <tr class="tr-detalle">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="td-editar"><button class="boton-tabla boton-editar"><img class="imagen-editar" src="images/icons8-editar-48.png" alt=""></button></td>
+                        <td class="td-elimnar"><button class="boton-tabla boton-eliminar"><img class="imagen-eliminar" src="images/icons8-basura-48.png" alt=""></button></td>
+                    </tr>
+                    <tr class="tr-detalle">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="td-editar"><button class="boton-tabla boton-editar"><img class="imagen-editar" src="images/icons8-editar-48.png" alt=""></button></td>
+                        <td class="td-elimnar"><button class="boton-tabla boton-eliminar"><img class="imagen-eliminar" src="images/icons8-basura-48.png" alt=""></button></td>
+                    </tr>
+                    <tr class="tr-detalle">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="td-editar"><button class="boton-tabla boton-editar"><img class="imagen-editar" src="images/icons8-editar-48.png" alt=""></button></td>
+                        <td class="td-elimnar"><button class="boton-tabla boton-eliminar"><img class="imagen-eliminar" src="images/icons8-basura-48.png" alt=""></button></td>
+                    </tr>
+                    <tr class="tr-detalle">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="td-editar"><button class="boton-tabla boton-editar"><img class="imagen-editar" src="images/icons8-editar-48.png" alt=""></button></td>
+                        <td class="td-elimnar"><button class="boton-tabla boton-eliminar"><img class="imagen-eliminar" src="images/icons8-basura-48.png" alt=""></button></td>
+                    </tr>
+                    <tr class="tr-detalle">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="td-editar"><button class="boton-tabla boton-editar"><img class="imagen-editar" src="images/icons8-editar-48.png" alt=""></button></td>
+                        <td class="td-elimnar"><button class="boton-tabla boton-eliminar"><img class="imagen-eliminar" src="images/icons8-basura-48.png" alt=""></button></td>
+                    </tr>-->
+                </tbody>
+            </table>
+        </div>
+         <button id="boton-agregar">+</button>
+    </div>
+
+
+</body>
+</html>

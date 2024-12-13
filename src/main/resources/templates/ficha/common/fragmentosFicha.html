@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--  
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${titulo}">Ficha Optica</title>
+     <link rel="stylesheet" href="../../${ruta}/styles.css" th:href="@{|/${ruta}/styles.css|}" >
+    <link rel="stylesheet" href="../../../static/ficha/styles.css" th:href="@{/ficha/styles.css}">
+</head>
+-->
+<div th:fragment="container-datos" class="container-datos"> 
+    <h4 class="titulo-lente">Lejos</h4>
+
+	<div th:replace="~{ficha/common/fragmentosFicha.html :: container-ojos}"></div>
+     
+    <div class="container-tablas">
+    	<table th:replace="~{ficha/common/fragmentosFicha.html :: tabla1}"></table>
+		<table th:replace="~{ficha/common/fragmentosFicha.html :: tabla2}"></table>
+		<table th:replace="~{ficha/common/fragmentosFicha.html :: tabla3}"></table>
+    </div>
+    
+    <div th:replace="~{ficha/common/fragmentosFicha :: total-por-ficha}"></div>
+
+    <label for="" class="label-armazon">Armazon:</label>
+    <select name="" class="combo-armazon"></select>
+
+    <label for="" class="label-precio">Precio:</label>
+    <select name="" class="combo-precio"></select>
+</div>
+
+
+<div th:fragment="container-ojos" class="container-ojos">
+    <label for="" class="label-derecho">Ojo Derecho</label>
+    <label for="" class="label-izquierdo">Ojo Izquierdo</label>
+</div>
+
+<table th:fragment="tabla1">
+   <thead>
+       <tr class="tr-titulos-">
+           <th class="th-esferico">Esferico</th>
+           <th class="th-cilindrico">Cilindrico</th>
+           <th class="th-eje">Eje</th>
+       </tr>
+   </thead>
+   <tbody>
+   	   <tr th:replace="~{ficha/common/fragmentosFicha.html :: tr-tabla-number-tabla1}"></tr>
+   	   <tr th:replace="~{ficha/common/fragmentosFicha.html :: tr-tabla-number-tabla1}"></tr>
+   </tbody>
+</table>
+
+<table th:fragment="tabla2">
+    <thead>
+        <tr class="tr-titulos-">
+            <th>D.I.</th>
+            <th>Altura</th>
+        </tr>
+    </thead>
+    <tbody>
+       <tr th:replace="~{ficha/common/fragmentosFicha.html :: tr-tabla-number-tabla2}"></tr>
+   	   <tr th:replace="~{ficha/common/fragmentosFicha.html :: tr-tabla-number-tabla2}"></tr>
+    </tbody>
+</table>
+
+<table th:fragment="tabla3">
+    <thead>
+        <tr th:replace="~{ficha/common/fragmentosFicha.html :: tr-titulo-tabla3}"></tr>
+    </thead>
+    <tbody>
+    	<tr th:replace="~{ficha/common/fragmentosFicha.html :: tr-tabla-combo}"></tr>
+    	<tr th:replace="~{ficha/common/fragmentosFicha.html :: tr-tabla-combo}"></tr>
+    </tbody>
+</table>
+
+<div th:fragment="total-por-ficha" class="container-totales-tabla">
+    <div class="container-total container-total-derecho"><input class="input-total" type="number"></div>
+    <div class="container-total container-total-izquierdo"><input class="input-total" type="number" name="" id=""></div>
+    <div class="container-total container-total-armazon"><input class="input-total" type="number" name="" id=""></div>
+</div>
+
+<table>
+	<tr th:fragment="tr-titulo-tabla3" class="tr-titulos-">
+        <th class="th-mineral">Mineral</th>
+        <th class="th-organico">Organico</th>
+        <th class="th-tratamiento">Otros - Tratamiento</th>
+    </tr>
+    
+	<tr th:fragment="tr-tabla-number-tabla1">
+		<td th:replace="~{ficha/common/fragmentosFicha.html :: td-tabla-number}"></td>
+		<td th:replace="~{ficha/common/fragmentosFicha.html :: td-tabla-number}"></td>
+		<td th:replace="~{ficha/common/fragmentosFicha.html :: td-tabla-number}"></td>
+	</tr>
+	
+	<tr th:fragment="tr-tabla-number-tabla2">
+		<td th:replace="~{ficha/common/fragmentosFicha.html :: td-tabla-number}"></td>
+		<td th:replace="~{ficha/common/fragmentosFicha.html :: td-tabla-number}"></td>
+	</tr>
+	
+	<tr>
+		<td th:fragment="td-tabla-number"><input type="number" class="input-tabla"></td>
+	</tr>
+	
+	<tr th:fragment=tr-tabla-combo>
+        <td><input class="input-checkbox" type="checkbox"></td>
+        <td><input class="input-checkbox" type="checkbox"></td>
+        <td>
+            <select name="" class="combo-tratamiento">
+
+            </select>
+        </td>
+    </tr>
+</table>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Armazones</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a href="../Menu/index.html" role="button"><img id="imagen-volver" src="images/icons8-atrás-64.png" alt="">Volver al Menu</a>
+    <h1>Armazones</h1>
+    <hr>
+    <div id="container-principal">
+        <div id="container-busqueda">
+            <input id="input-buscador" type="text" placeholder="Buscar Armazones">
+            <img src="images/baseline_search_white_36dp.png" alt="" id="imagen-lupa">
+        </div>
+        <div id="container-table">
+            <table>
+                <thead>
+                    <tr id="tr-cabeza">
+                        <th id="th-nombre">Nombre</th>
+                        <th id="th-regular">Precio Regular</th>
+                        <th id="th-descuento">Precio c/Desc.</th>
+                        <th id="th-tarjeta">Precio Tarjeta</th>
+                        <th class="th-boton"></th>
+                        <th class="th-boton"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="tr-cuerpo">
+                        <td class="td-nombre"><input class="input-nombre input-td" type="text" ></td>
+                        <td class="td-regular"><input class="input-regular input-td" type="text" ></td>
+                        <td class="td-descuento"><input class="input-descuento input-td" type="text" ></td>
+                        <td class="td-tarjeta"><input class="input-tarjeta input-td" type="text" ></td>
+                        <td class="td-edicion"><button class="boton-edicion boton-tabla"><img src="images/icons8-editar-48.png" alt="" class="imagen-editar"></button></td>
+                        <td class="td-eliminar"><button class="boton-eliminar boton-tabla"><img src="images/icons8-basura-48.png" alt="" class="imagen-eliminar"></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button id="boton-agregar">+</button>
+    </div>
+</body>
+</html>
