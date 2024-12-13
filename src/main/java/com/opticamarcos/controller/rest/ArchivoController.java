@@ -1,4 +1,4 @@
-package com.opticamarcos.controller;
+package com.opticamarcos.controller.rest;
 
 //@RestController
 //@RequestMapping("/archivo")

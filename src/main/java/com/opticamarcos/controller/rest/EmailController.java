@@ -1,4 +1,4 @@
-package com.opticamarcos.controller;
+package com.opticamarcos.controller.rest;
 
 import com.opticamarcos.exceptions.CustomException;
 import com.opticamarcos.service.EmailService;

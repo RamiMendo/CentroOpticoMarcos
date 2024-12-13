@@ -1,4 +1,4 @@
-package com.opticamarcos.controller;
+package com.opticamarcos.controller.rest;
 
 import java.util.List;
 
