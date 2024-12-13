@@ -37,8 +37,8 @@ public class EmailService {
         String texto = mailMessage.getText() + ficha.getIdFicha();
         String pathFicha = "C:\\RAMIRO\\Programacion\\Java\\Proyectos\\CentroOpticoMarcosWeb\\src\\main\\resources\\fichas\\Ficha-" + ficha.getIdFicha() + ".pdf";
 
-        //mimeMessageHelper.setTo("centroopticomarcos@gmail.com");
-        mimeMessageHelper.setTo("ramamendoza@gmail.com");
+        mimeMessageHelper.setTo("centroopticomarcos@gmail.com");
+        //mimeMessageHelper.setTo("ramamendoza@gmail.com");
         mimeMessageHelper.setSubject(subject);
         mimeMessageHelper.setText(texto);
 
