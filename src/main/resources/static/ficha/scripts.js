@@ -1,0 +1,1 @@
+document.getElementById('input-fecha').valueAsDate = new Date();

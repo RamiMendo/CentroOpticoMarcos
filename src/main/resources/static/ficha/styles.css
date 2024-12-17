@@ -1,0 +1,573 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Righteous&family=Rubik:ital,wght@0,300..900;1,300..900&family=Salsa&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&family=Signika:wght@300..700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #396573;
+    height: 100vh;
+    font-size: 14px;
+}
+
+/*********************************CABEZA DE PAGINA**************************************************/
+a,
+a:visited,
+a:hover,
+a:active {
+    color: inherit;
+    text-decoration: inherit;
+    font-weight: inherit;
+}
+
+#boton-volver{
+    background-color: transparent;
+    font-family: 'Rubik';
+    font-size: 16px;
+    font-weight: 600;
+    font-style: italic;
+    color: white;
+    border-style: none;
+    position: absolute;
+    top: 3%;
+    left: 3%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+    width: 190px;
+    height: 5%;
+}
+
+#imagen-volver{
+    width: 15%;
+    height: 60%;
+}
+
+#titulo-pagina{
+    position: absolute;
+    top: 2%;
+    left: 50%;
+    transform: translate(-50%,-5%);
+    color: white;
+    font-family: 'Righteous';
+    font-weight: 400;
+}
+
+#linea-underline{
+    position: absolute;
+    top: 8%;
+    left: 50%;
+    width: 50px;
+    transform: translate(-50%,-8%);
+}
+
+#boton-imprimir{
+    width: 70px;
+    height: 7%;
+    border-style: none;
+    border-radius: 10px;
+    position: relative;
+    top: 5%;
+    left: 89%;
+}
+
+/*************************************************************************************************/
+
+#container-ficha{
+    width: 90%;
+    min-width: 920px;
+    max-width: 980px;
+    height: 80%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%,-70%);
+    border-radius: 10px;
+    box-shadow: 3px 3px 2px 1px rgba(0, 0, 0, 0.3);
+}
+
+/*********************************CABEZA**************************************************/
+#container-cabeza{
+    width: 100%;
+    height: 15%;
+    border-style: none;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #8a8a8a;
+    font-family: 'Rubik';
+    font-size: 14px;
+}
+
+#titulo-ficha{
+    position: absolute;
+    top: 1%;
+    left: 50%;
+    transform: translate(-50%,-1%);
+    font-family: 'Permanent Marker';
+    font-size: 25px;
+}
+
+#container-datos-cliente{
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%,-10%);
+    width: 95%;
+    height: 4%;
+}
+
+#label-fecha{
+    position: absolute;
+    top: 3.5%;
+    left: 5%;
+    transform: translate(-5%,-2%);
+}
+
+#input-fecha{
+    position: absolute;
+    top: 3%;
+    left: 18%;
+    transform: translate(-16%,-2%);
+    width: 13%;
+    height: 4%;
+    font-family: 'Rubik';
+}
+
+.input-cabeza{
+    height: 80%;
+    width: 15%;
+    padding-left: 4px;
+    font-family: 'Rubik';
+}
+
+#label-nombre{
+    position: relative;
+    left: 2%;
+}
+
+#input-nombre{
+    position: relative;
+    left: 3%;
+}
+
+#label-telefono{
+    position: relative;
+    left: 15%;
+}
+
+#input-telefono{
+    position: relative;
+    left: 16%;
+}
+
+#input-telefono::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+}
+
+#label-domicilio{
+    position: relative;
+    left: 28%;
+}
+
+#input-domicilio{
+    position: relative;
+    left: 29%;
+    width: 20%;
+}
+/*****************************************************************************************/
+/**********************************DATOS**************************************************/
+.container-datos{
+    height: 25%;
+    width: 90%;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%,0);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.titulo-lente{
+    font-family: 'Righteous';
+    font-weight: 400;
+    font-size: 17px;
+    display: flex;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,0);
+    height: fit-content;
+}
+
+.container-ojos{
+    position: relative;
+    top: 60%;
+    transform: translate(0,-60%);
+    width: 10%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: 'Signika';
+    font-size: 14px;
+}
+
+.container-tablas{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1%;
+    position: relative;
+    top: 45%;
+    transform: translate(0,-45%);
+    width: 80%;
+    height: 55%;
+    
+}
+
+table{
+    border-style: solid;
+    border-width: thin;
+    border-color: #3b3b3b;
+    border-collapse: collapse; 
+    table-layout: fixed;
+}
+
+th,td{
+    text-align: center;
+    font-size: 13px;
+    border: 1px solid #3b3b3b;
+}
+
+th{
+    font-family: 'Salsa';
+    font-weight: 400;
+    white-space: nowrap;
+    padding: 5px 15px;
+}
+
+.th-esferico{
+    min-width: 80px;
+    max-width: 80px;
+}
+
+.th-cilindrico{
+    min-width: 95px;
+    max-width: 95px;
+}
+
+.th-eje{
+    min-width: 50px;
+    max-width: 50px;
+}
+
+.th-id{
+    min-width: 50px;
+    max-width: 50px;
+}
+
+td{
+    font-size: 17px;
+}
+
+.combo-tratamiento{
+    width: 95%;
+    font-size: 17px;
+    border-style: none;
+    outline: none;
+    text-align: center;
+}
+
+.input-tabla{
+    width: 95%;
+    font-size: 13px;
+    border-style: none;
+    outline: none;
+    text-align: center;
+}
+
+.container-totales-tabla{
+    width: 8%;
+    height: 60%;
+    position: relative;
+    top: 90%;
+    transform: translate(0,-90%);
+    border-style: solid;
+    border-width: thin;
+    border-color: #3b3b3b;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.container-total{
+    width: 100%;
+    height: 50%;
+}
+
+.container-total-izquierdo{
+    border-top-style:solid;
+    border-width: thin;
+    border-color: #3b3b3b;
+}
+
+.container-total-armazon{
+    border-top-style: solid;
+    border-width: thin;
+    border-color: #3b3b3b;
+}
+
+.input-total{
+    width: 90%;
+    height: 90%;
+    display: flex;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-style: none;
+    outline: none;
+    text-align: center;
+    font-size: 13px;
+}
+
+.input-total[type=number]::-webkit-inner-spin-button,.input-tabla[type=number]::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+}
+
+.label-armazon, .label-precio{
+    position: absolute;
+    top: 95%;
+    left: 45%;
+    transform: translate(-45%,-95%);
+    font-family: 'Salsa';
+    font-size: 14px;
+}
+
+.label-precio{
+    left: 73%;
+    transform: translate(-73%,-95%);
+}
+
+.combo-armazon, .combo-precio{
+    position: absolute;
+    top: 95%;
+    left: 60%;
+    transform: translate(-60%,-95%);
+    width: 17%;
+    height: 12%;
+}
+
+.combo-precio{
+    left: 88%;
+    transform: translate(-88%,-95%);
+    width: 15%;
+}
+
+#container-polifocal{
+    width: 90%;
+    height: 17%;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%,0);
+    display: flex;
+    flex-direction: row;
+    gap: 1%;
+}
+
+#container-checkbox{
+    position: relative;
+    top: 50%;
+    left: 5%;
+    transform: translate(-5%,-50%);
+    height: 40%;
+    width: 15%;   
+}
+
+#input-multifocal,#label-multifocal{
+    position: absolute;
+    top: 70%;
+}
+
+#input-multifocal{
+    left: 0;
+}
+
+#label-multifocal{
+    left: 15%;
+}
+
+#ojos-polifocal{
+    width: 10%;
+    height: 45%;
+    top: 75%;
+    left: 13%;
+    transform: translate(-13%,-75%);
+}
+
+#container-tablas-polifocal #tabla-3{
+    position: relative;
+    top: 60%;
+    transform: translate(0,-60%);
+    height: 65%;
+}
+
+#container-tablas-polifocal{
+    top: 50%;
+    left: 25%;
+    transform: translate(-25%,-50%);
+    width: 52%;
+    height: 85%;
+    gap: 2%;
+}
+
+hr{
+    width: 85%;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%,0);
+}
+
+#container-total-ficha{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    height: 20%;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%,0);
+}
+
+#container-totales{
+    display: flex;
+    width: 8%;
+    height: 80%;
+    top: 15%;
+    left: 95%;
+    transform: translate(-95%,-15%);
+}
+
+#container-total-seña{
+    border-top-style: solid;
+    border-top-width: thin;
+    border-bottom-style: solid;
+    border-bottom-width: thin;
+}
+
+.container-totales-finales{
+    height: 60%;
+    width: 100%;
+    border-color: #3b3b3b;
+}
+
+#container-totales-polifocal{
+    height:30%;
+    top: 70%;
+    left: 13%;
+    transform: translate(-13%,-70%);
+}
+
+#container-totales-polifocal .container-total{
+    height: 100%;
+}
+
+#container-labeles{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-family: 'Sansita';
+    font-weight: 400;
+    font-size: 15px;
+    width: fit-content;
+    height: 80%;
+    position: relative;
+    left: 90%;
+    top: 25%;
+    transform: translate(-90%,-25%);
+}
+
+#label-total{
+    font-weight: 700;
+    font-size: 17px;
+}
+
+#boton-eliminar,#boton-grabar{
+    width: 110px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10%;
+    border-radius: 10px;
+    font-family: 'Rubik';
+    font-weight: 400;
+    font-size: calc(0.7em + 0.5vw);
+    color: white;
+    border-style: none;
+    position: absolute;
+    top: 95%;
+    left: 5%;
+}
+
+#boton-grabar{
+    left: 85%;
+}
+
+button{
+    z-index: 1;
+}
+
+button,button::before,button::after{
+    transition: all .3s ease;
+}
+
+button::before,button::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+button:active{
+    transform: translate(2px, 3px);
+}
+
+    /*Este va actuar como fondo de boton*/
+button:before{  
+    border-radius: 10px;
+    background-color: #7E7E7E;
+}
+
+#boton-eliminar:before{
+    background-color: #D9453C;
+}
+
+#boton-grabar::before{
+    background-color: #63BD6C;
+}
+
+    /*Este va actuar como sombra de boton*/
+button::after{
+    border-radius: 10px;
+    z-index: -2;
+    background-color: #303030;
+    transform: translate(2px, 3px);
+}
+
+button:active::after{ 
+    transform: translate(0, 0);
+}
+
+#imagen-eliminar,#imagen-grabar{
+    height: 95%;
+    width: 25%;
+}
