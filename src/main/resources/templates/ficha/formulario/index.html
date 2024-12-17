@@ -6,10 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FICHA OPTICA</title>
-    <link rel="stylesheet" href="../../../static/ficha/styles.css" th:href="@{/styles.css}">
+    <link rel="stylesheet" href="../../../static/ficha/styles.css" th:href="@{/ficha/styles.css}">
 </head>
 
-<body>
+<body th:action="@{/ficha/save}">
     <a role="button" id="boton-volver" href="../Listado Ficha/index.html"><img id="imagen-volver" src="images/icons8-atrás-64.png" alt="">Volver al Listado</a>
     <h1 id="titulo-pagina">Ficha Optica</h1>
     <hr id="linea-underline">
