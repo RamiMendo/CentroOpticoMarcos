@@ -67,7 +67,7 @@ public class FichaService {
 			ficha.escribirPDF();
 		}
 
-		File archivoPDF = new File("C:\\RAMIRO\\Programacion\\Java\\Proyectos\\CentroOpticoMarcosWeb\\src\\main\\resources\\fichas\\Ficha-" + idFicha + ".pdf");
+		File archivoPDF = new File("C:\\RAMIRO\\Programacion\\Java\\Proyectos\\CentroOpticoMarcos\\src\\main\\resources\\archivos\\Ficha-" + idFicha + ".pdf");
 
 		if (!archivoPDF.exists())
 			throw new FileNotFoundException("NO SE ENCONTRO EL ARCHIVO PARA LA FICHA " + idFicha);
@@ -103,7 +103,7 @@ public class FichaService {
 				nuevoTotal = nuevoTotal + medida.getPrecio();
 				medidaRepository.save(medida);
 			}
-			nuevoTotal = nuevoTotal + lente.getArmazon().getPrecio();
+			if (lente.getArmazon()!=null) nuevoTotal = nuevoTotal + lente.getArmazon().getPrecio();
 			lenteRepository.save(lente);
 		}
 

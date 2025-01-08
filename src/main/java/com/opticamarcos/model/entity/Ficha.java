@@ -21,6 +21,7 @@ import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.util.Matrix;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Data
 @Getter
@@ -37,6 +38,7 @@ public class Ficha implements Archivo {
 	private Long idFicha;
 
 	@Column(nullable = false)
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private LocalDate fecha;
 
 	@Column(nullable = false)
@@ -170,7 +172,7 @@ public class Ficha implements Archivo {
 		escribeTextoFinales(totales);
 
 		contentStream.close();
-		document.save("C:\\RAMIRO\\Programacion\\Java\\Proyectos\\CentroOpticoMarcosWeb\\src\\main\\resources\\fichas\\Ficha-" + idFicha + ".pdf");
+		document.save("C:\\RAMIRO\\Programacion\\Java\\Proyectos\\CentroOpticoMarcos\\src\\main\\resources\\archivos\\Ficha-" + idFicha + ".pdf");
 		document.close();
 	}
 
