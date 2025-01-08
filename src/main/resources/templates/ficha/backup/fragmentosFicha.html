@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../../../static/ficha/styles.css" th:href="@{/ficha/styles.css}">
 </head>
 -->
-<!--<div th:fragment="container-datos(titulo, lente)" class="container-datos">
+<div th:fragment="container-datos(titulo, lente)" class="container-datos">
     <h4 class="titulo-lente" th:text="${titulo}"></h4>
 
 	<div th:replace="~{ficha/common/fragmentosFicha.html :: container-ojos}"></div>
@@ -28,38 +28,40 @@
     <label class="label-precio">Precio:</label>
     <select name="" class="combo-precio"></select>
 </div>
--->
 
-<!----------------------------------------------  FORMULARIO ---------------------------------------------->
 
-<div th:fragment="container-ojos(esPolifocal)" class="container-ojos" th:id="${esPolifocal}? 'ojos-polifocal':''">
+<div th:fragment="container-ojos" class="container-ojos">
     <label class="label-derecho">Ojo Derecho</label>
     <label class="label-izquierdo">Ojo Izquierdo</label>
 </div>
 
-<table>
-    <thead th:fragment="tabla1-titulos">
-        <tr class="tr-titulos-">
-            <th class="th-esferico">Esferico</th>
-            <th class="th-cilindrico">Cilindrico</th>
-            <th class="th-eje">Eje</th>
-        </tr>
-    </thead>
-    <thead th:fragment="tabla2-titulos">
+<table th:fragment="tabla1">
+   <thead>
+       <tr class="tr-titulos-">
+           <th class="th-esferico">Esferico</th>
+           <th class="th-cilindrico">Cilindrico</th>
+           <th class="th-eje">Eje</th>
+       </tr>
+   </thead>
+   <tbody>
+   	   <tr th:replace="~{ficha/common/fragmentosFicha.html :: tr-tabla-number-tabla1}"></tr>
+   	   <tr th:replace="~{ficha/common/fragmentosFicha.html :: tr-tabla-number-tabla1}"></tr>
+   </tbody>
+</table>
+
+<table th:fragment="tabla2">
+    <thead>
         <tr class="tr-titulos-">
             <th>D.I.</th>
             <th>Altura</th>
         </tr>
     </thead>
-    <thead th:fragment="tabla3-titulos">
-        <tr class="tr-titulos-">
-            <th class="th-mineral">Mineral</th>
-            <th class="th-organico">Organico</th>
-            <th class="th-tratamiento">Otros - Tratamiento</th>
-        </tr>
-    </thead>
+    <tbody>
+       <tr th:replace="~{ficha/common/fragmentosFicha.html :: tr-tabla-number-tabla2}"></tr>
+   	   <tr th:replace="~{ficha/common/fragmentosFicha.html :: tr-tabla-number-tabla2}"></tr>
+    </tbody>
 </table>
-<!--
+
 <table th:fragment="tabla3">
     <thead>
         <tr th:replace="~{ficha/common/fragmentosFicha.html :: tr-titulo-tabla3}"></tr>
@@ -69,7 +71,7 @@
     	<tr th:replace="~{ficha/common/fragmentosFicha.html :: tr-tabla-combo}"></tr>
     </tbody>
 </table>
--->
+
 <div th:fragment="total-por-ficha" class="container-totales-tabla">
     <div class="container-total container-total-derecho"><input class="input-total" type="number"></div>
     <div class="container-total container-total-izquierdo"><input class="input-total" type="number" name=""></div>
@@ -77,6 +79,12 @@
 </div>
 
 <table>
+	<tr th:fragment="tr-titulo-tabla3" class="tr-titulos-">
+        <th class="th-mineral">Mineral</th>
+        <th class="th-organico">Organico</th>
+        <th class="th-tratamiento">Otros - Tratamiento</th>
+    </tr>
+    
 	<tr th:fragment="tr-tabla-number-tabla1">
 		<td th:replace="~{ficha/common/fragmentosFicha.html :: td-tabla-number}"></td>
 		<td th:replace="~{ficha/common/fragmentosFicha.html :: td-tabla-number}"></td>

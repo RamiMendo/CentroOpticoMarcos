@@ -194,6 +194,12 @@ a:active {
     justify-content: space-between;
 }
 
+.linea-monofocal{
+    position: absolute;
+    top: 100%;
+    width: 95%;
+}
+
 .titulo-lente{
     font-family: 'Righteous';
     font-weight: 400;

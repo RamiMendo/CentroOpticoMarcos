@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--  <head th:replace="~{ficha/common/fragmentosFicha.html :: head}"></head> -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FICHA OPTICA</title>
+    <link rel="stylesheet" href="../../../static/ficha/formulario/styles.css" th:href="@{/ficha/formulario/styles.css}">
+</head>
+
+<body th:action="@{/ficha/save}" th:object="${ficha}">
+    <a role="button" id="boton-volver" href="../Listado Ficha/index.html"><img id="imagen-volver" src="formulario/images/icons8-atrás-64.png" alt="">Volver al Listado</a>
+    <h1 id="titulo-pagina">Ficha Optica</h1>
+    <hr id="linea-underline">
+    <button id="boton-imprimir"><a th:href="@{/ficha/download(id=${ficha.idFicha}, sobreescribir=${ficha.estaImpreso})}"><img id="imagen-impresora" src="formulario/images/icons8-imprimir-50.png"></a></button>
+    <div id="container-ficha">
+        <div id="container-cabeza">
+            <h3 id="titulo-ficha" th:text="'Nº ' + ${ficha.idFicha}"></h3>
+            <label class="label-cabeza" id="label-fecha">Fecha Ingreso:</label>
+            <input type="date" id="input-fecha" th:value="${ficha.fecha}">
+            <div id="container-datos-cliente">
+                <label class="label-cabeza" id="label-nombre">Cliente:</label>
+                <select name="" id="input-nombre" class="input-cabeza" th:field="*{cliente.nombre}">
+                   <!-- <option th:each="cliente : ${clientes}" th:value="${cliente}" th:text="${cliente.nombre}" th:selected="${ficha.cliente.idCliente==cliente.idCliente}"></option>-->
+                </select>
+                <label class="label-cabeza" id="label-telefono">Telefono:</label>
+                <input type="number" class="input-cabeza" id="input-telefono" maxlength="10" th:field="*{cliente.telefono}">
+                <label class="label-cabeza" id="label-domicilio">Domicilio:</label>
+                <input type="text" class="input-cabeza" id="input-domicilio" th:field="*{cliente.direccion}">
+            </div>
+        </div>
+
+        <div class="container-datos" th:each="lente: ${ficha.lentes}" >
+            <h4 class="titulo-lente" th:text="${lente.esCerca}? 'Cerca':'Lejos'"></h4>
+
+            <div th:replace="~{ficha/common/fragmentosFicha.html :: container-ojos}"></div>
+
+            <div class="container-tablas" th:id="${lente.esMultifocal || lente.esBifocal}? 'container-tablas-polifocal' : ''">
+                <table th:if="${lente.esMultifocal == false && lente.esBifocal == false}">
+                    <thead th:replace="~{ficha/common/fragmentosFicha.html :: tabla1-titulos}"></thead>
+                    <tbody>
+                        <tr th:each="medida: ${lente.medidasLentes}">
+                            <td><input type="number" class="input-tabla" th:text="${medida.esferico}"></td>
+                            <td><input type="number" class="input-tabla" th:text="${medida.cilindrico}"></td>
+                            <td><input type="number" class="input-tabla" th:text="${medida.eje}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table>
+                    <thead th:replace="~{ficha/common/fragmentosFicha.html :: tabla2-titulos}"></thead>
+                    <tbody>
+                        <tr th:each="medida: ${lente.medidasLentes}">
+                            <td><input type="number" class="input-tabla" th:text="${medida.distanciaIntercupilar}"></td>
+                            <td><input type="number" class="input-tabla" th:text="${medida.altura}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table>
+                    <thead th:replace="~{ficha/common/fragmentosFicha.html :: tabla3-titulos}"></thead>
+                    <tbody>
+                        <tr th:each="medida: ${lente.medidasLentes}">
+                            <td th:text="${medida.esMineral}"></td>
+                            <td><input type="number" class="input-tabla" th:text="${medida.esOrganico}"></td>
+                            <td><input type="number" class="input-tabla" th:text="${medida.cristal.nombre}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+       <!--    <div th:replace="~{ficha/common/fragmentosFicha :: total-por-ficha}"></div>-->
+            <div class="container-totales-tabla">
+                <div th:class="${medida.esOjoDerecho}? 'container-total container-total-derecho' : 'container-total container-total-izquierdo'" th:each="medida: ${lente.medidasLentes}">
+                    <input class="input-total" type="number" th:text="${medida.precio}">
+                </div>
+                <div class="container-total container-total-armazon">
+                    <input class="input-total" type="number" th:text="${lente.armazon.precio}">
+                </div>
+            </div>
+
+            <label class="label-armazon">Armazon:</label>
+            <select name="" class="combo-armazon" th:selected="${lente.armazon.nombre}"></select>
+        </div>
+
+        <div id="container-polifocal">
+            <div id="container-checkbox">
+                <input type="radio" id="input-bifocal">
+                <label id="label-bifocal">BIFOCAL</label>
+                <input type="radio" id="input-multifocal">
+                <label id="label-multifocal">MULTIFOCAL</label>
+            </div>
+
+			<div th:replace="~{ficha/common/fragmentosFicha.html :: container-ojos}"></div>
+<!--
+            <div class="container-tablas" id="container-tablas-polifocal">
+                <table>
+                    <thead th:replace="~{ficha/common/fragmentosFicha.html :: tabla2-titulos}"></thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="number" class="input-tabla" ></td>
+                            <td><input type="number" class="input-tabla" ></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+	            <table id="tabla-3">
+                    <thead th:replace="~{ficha/common/fragmentosFicha.html :: tabla3-titulos}"></thead>
+				    <tbody>
+				    	<tr>
+                            <td><input class="input-checkbox" type="checkbox"></td>
+                            <td><input class="input-checkbox" type="checkbox"></td>
+                            <td>
+                                <select name="" class="combo-tratamiento">
+
+                                </select>
+                            </td>
+                        </tr>
+				    </tbody>
+	            </table>
+            </div>
+-->
+            <div class="container-totales-tabla" id="container-totales-polifocal">
+                <div class="container-total"><input class="input-total" type="number"></div>
+            </div>
+	            
+        </div>
+
+        <hr id="linea-polifocal">
+        
+        <div id="container-total-ficha">
+            <div id="container-labeles">
+                <label id="label-total">Total</label>
+                <label id="label-seña">Seña</label>
+                <label id="label-saldo">Saldo</label>
+            </div>
+            <div class="container-totales-tabla" id="container-totales">
+                <div id="container-total-final" class="container-totales-finales"><input type="number" class="input-tabla" th:value="${ficha.total}"></div>
+                <div id="container-total-seña" class="container-totales-finales"><input type="number" class="input-tabla" th:value="${ficha.senia}"></div>
+                <div id="container-total-saldo" class="container-totales-finales"><input type="number" class="input-tabla" th:value="${ficha.saldo}"></div>
+            </div>
+            
+        </div>
+    </div>
+    <button id="boton-eliminar"><img id="imagen-eliminar" src="images/icons8-basura-48.png" alt="">Eliminar</button>
+    <button id="boton-grabar"><img id="imagen-grabar" src="images/icons8-guardar-50.png" alt="">Grabar</button>
+</body>
+</html>

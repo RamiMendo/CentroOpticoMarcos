@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clientes</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../../../static/cliente/styles.css" th:href="@{/cliente/styles.css}">
 </head>
 <body>
-    <a href="../Menu/index.html" role="button"><img src="images/baseline_arrow_back_ios_new_black_36dp.png" alt="">Volver al Menu</a>
+    <a href="../Menu/index.html" th:href="@{/home}" role="button"><img src="cliente/images/baseline_arrow_back_ios_new_black_36dp.png">Volver al Menu</a>
     <h1>Clientes</h1>
     <hr>
     <div id="container-principal">
         <div id="container-busqueda">
             <input id="input-buscador" type="text" placeholder="Buscar Clientes">
-            <img src="images/baseline_search_white_36dp.png" alt="" id="imagen-lupa">
+            <img src="cliente/images/baseline_search_white_36dp.png" id="imagen-lupa">
         </div>
         <div id="container-table">
             <table>
@@ -27,17 +27,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="tr-cuerpo">
-                        <td class="td-nombre"><input class="input-nombre input-td" type="text" ></td>
-                        <td class="td-telefono"><input class="input-telefono input-td" type="text" ></td>
-                        <td class="td-direccion"><input class="input-direccion input-td" type="text" ></td>
-                        <td class="td-edicion"><button class="boton-edicion boton-tabla"><img src="images/icons8-editar-48.png" alt="" class="imagen-editar"></button></td>
-                        <td class="td-eliminar"><button class="boton-eliminar boton-tabla"><img src="images/icons8-basura-48.png" alt="" class="imagen-eliminar"></button></td>
+                    <tr class="tr-cuerpo" th:each="cliente: ${listaCliente}">
+                        <td class="td-nombre" th:text="${cliente.nombre}"></td>
+                        <td class="td-telefono" th:text="${cliente.telefono}"></td>
+                        <td class="td-direccion" th:text="${cliente.direccion}"></td>
+                        <td class="td-edicion">
+                            <button class="boton-edicion boton-tabla">
+                                <a th:href="@{/cliente/}"><img src="cliente/images/icons8-editar-48.png" class="imagen-editar"></a>
+                            </button>
+                        </td>
+                        <td class="td-eliminar">
+                            <button class="boton-eliminar boton-tabla">
+                                <a th:href="@{/cliente/}"><img src="cliente/images/icons8-basura-48.png" class="imagen-eliminar"></a>
+                            </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <button id="boton-agregar">+</button>
+        <button id="boton-agregar"><a th:href="@{/cliente/}">+</a></button>
     </div>
 </body>
 </html>

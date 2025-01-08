@@ -1,0 +1,500 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Righteous&family=Rubik:ital,wght@0,300..900;1,300..900&family=Salsa&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&family=Signika:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manuale:ital,wght@0,300..800;1,300..800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #396573;
+    height: 100vh;
+}
+
+a,
+a:visited,
+a:hover,
+a:active {
+    color: inherit;
+    text-decoration: inherit;
+    font-weight: inherit;
+}
+
+#boton-volver{
+    background-color: transparent;
+    font-family: 'Rubik';
+    font-size: 17px;
+    font-weight: 600;
+    font-style: italic;
+    color: white;
+    border-style: none;
+    position: absolute;
+    top: 4%;
+    left: 1%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+    width: 20%;
+    height: 5%;
+    
+}
+#imagen-volver{
+    width: 45px;
+    height: 45px;
+}
+
+#titulo-pagina{
+    font-family: 'Permanent Marker';
+    font-size: 30px;
+    font-weight: 400;
+    color: white;
+    text-align: center;
+}
+
+#hr-underline{
+    position: relative;
+    top: 2%;
+    left: 50%;
+    transform: translate(-50%,-2%);
+    width: 70px;
+}
+
+#container-table{
+    width: 90%;
+    min-width: 900px;
+    max-width: 1000px;
+    height: 80%;
+    background-color: white;
+    border-radius: 10px;
+    position: relative;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%,-35%);
+}
+/* ****************************CABEZA************************************** */
+
+#container-cabeza{
+    position: relative;
+    top: 2%;
+    left: 5%;
+    width: 90%;
+    height: 4%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+   
+}
+
+#boton-filtros,#boton-pagar{
+    font-family: 'Salsa';
+    font-size: 75%;
+    background-color: white;
+    border-style: solid;
+    border-width: thin;
+    border-radius: 5px;
+    height: 85%;
+}
+
+#boton-filtros{
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10%;
+    font-size: 90%;
+}
+
+#imagen-filtro{
+    height: 100%;
+    width: 25%;
+}
+
+#boton-pagar{
+    width: 13%;
+    height: 95%;
+    left: 77%;
+}
+
+#container-input{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,0);
+    height: 85%;
+    width:20%;
+    background-color: #396573;
+    border-radius: 30px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#input-ficha{
+    outline: none;
+    overflow: hidden;
+    width: 75%;
+    height: 95%;
+    background-color: transparent;
+    border-style: none;
+    font-family: 'Rubik';
+    font-size: 14px;
+    font-weight: 100;
+    color: white;
+}
+
+#input-ficha::placeholder{
+    color: white;
+}
+
+#input-ficha::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+}
+
+#imagen-lupa{
+    height: 95%;
+}
+
+/* ************************************************************************* */
+
+#wrapper{
+    border-style: solid;
+    border-width: thin;
+    border-color: rgb(145, 145, 145);
+    border-radius: 10px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    position: relative;
+    table-layout: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%,-30%);
+    width: 90%;
+    height: 85%;
+} 
+/* 
+#wrapper::-webkit-scrollbar-track {
+    border-radius: 15px;
+}
+
+#wrapper::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 15px;
+} */
+
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+} 
+
+thead{
+    background-color: #DEF7FF;
+    height: 40px;
+    width: 100%;
+    position: sticky;
+}
+
+th{
+    font-family: 'Rubik';
+    font-weight: 500;
+    font-size: 15px;
+}
+
+#th-input{
+    width: 5%;
+}
+
+#th-fecha{
+    width: 15%;
+}
+
+#th-cliente{
+    width: 19%;
+}
+
+#th-seña{
+    width: 8%;
+}
+
+#th-saldo{
+    width: 13%;
+}
+
+#th-total{
+    font-weight: 700;
+    font-size: 19px;
+    width: 13%;
+}
+
+.th-accion{
+    width: 8%;
+}
+
+tr{
+    text-align: center;
+    font-family: 'Salsa';
+    font-size: 15px;
+    font-weight: 100;
+    color: rgb(34, 34, 34);
+    border-bottom: 1px solid #ddd;
+   
+}
+
+.tr-detalle{
+    height: 50px;
+    max-height: 50px;
+    width: 100%;
+}
+
+.boton-tabla{
+    height: 55%;
+    width: 60%;
+    background-color: #396573;
+    border-style: none;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 20%;
+}
+
+.boton-eliminar{
+    background-color: #D9453C;
+}
+
+.imagen-editar, .imagen-eliminar{
+    height: 100%;
+    width: 50%;
+}
+
+#boton-agregar{
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    border-style: none;
+    background-color: #63BD6C;
+    color: white;
+    font-size: 25px;
+    font-weight: 700;
+    text-align: center;
+    top: 6%;
+    left: 50%;
+}
+
+button{
+    position: relative;
+    z-index: 1;
+}
+
+button,button::before,button::after{
+    transition: all .3s ease;
+}
+
+button::before,button::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+button:active{
+    transform: translate(1px, 2px);
+}
+
+    /*Este va actuar como fondo de boton*/
+
+.boton-eliminar:before{
+    border-radius: 30px;
+    background-color: #D9453C;
+}
+
+.boton-editar:before{
+    border-radius: 30px;
+    background-color: #396573;
+}
+
+#boton-grabar::before{
+    background-color: #63BD6C;
+}
+
+    /*Este va actuar como sombra de boton*/
+
+.boton-tabla::after{
+    z-index: -2;
+    background-color: #9b9b9b;
+    transform: translate(1px, 2px);
+}
+
+.boton-eliminar::after{
+    border-radius: 30px;
+}
+
+.boton-editar::after{
+    border-radius: 30px;
+}
+
+button:active::after{ 
+    transform: translate(0, 0);
+}
+
+/*******************************************************************/
+
+#container-father-filtros{
+    height: 35%;
+    width: 25%;
+    min-width: 200px;
+    max-width: 250px;
+    background-color: white;
+    position: fixed;
+    top:24%;
+    left: 10%;
+    transform: translate(-10%,-24%);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: solid thin #396573;
+    border-radius: 10px;
+}
+
+.container-son-filtro{
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+#container-pago{
+    height: 18%;
+}
+
+#check-saldo,#check-senia{
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translate(-10%,-50%);
+}
+
+#check-senia{
+    left: 55%;
+}
+
+#label-saldo,#label-senia{
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-25%,-50%);
+}
+
+#label-senia{
+    left: 70%;
+}
+
+#container-totales, #container-fechas{
+    height: 32%;
+    justify-content: center;
+}
+
+.titulo-container{
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%,0);
+    width: 65%;
+    text-align: center;
+    font-family: 'Manuale';
+    font-weight: 500;
+}
+
+.label-filtro{
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translate(-20%,-50%);
+    font-family: 'Manuale';
+    font-size: 14px;
+}
+
+.label-hasta{
+    left: 67%;
+}
+
+.input-filtro{
+    width: 35%;
+    height: 23%;
+    position: absolute;
+    top: 85%;
+    left: 15%;
+    transform: translate(-15%,-85%);
+    border-style: none;
+    border-radius: 5px;
+    background-color: #e2e2e2;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.input-fecha{
+    width: 45%;
+    left: 8%;
+    font-size: 12px;
+    font-family: 600;
+}
+
+.input-hasta{
+    left: 60%;
+}
+
+.hr-inputs{
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%,-80%);
+    width: 5%;
+}
+
+.hr-div{
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    width: 80%;
+    background-color: #f1f1f1;
+}
+
+#container-botones{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 20%;
+    width: 100%;
+}
+
+.boton-filtro{
+    font-family: 'Manuale';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 55%;
+    border-radius: 5px;
+    border: solid thin
+}
+
+#boton-cerrar{
+    border-color: #396573;
+    background-color: white;
+    color: #396573;
+    font-weight: 700;
+}
+
+#boton-aplicar{
+    border-color: white;
+    background-color: #396573;
+    color: white;
+}
