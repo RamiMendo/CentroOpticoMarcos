@@ -20,7 +20,7 @@ public class Cliente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="id_cliente")
-	private Integer idCliente;
+	private Integer id;
 
 	@Column(nullable = false, length = 50)
 	private String nombre;
