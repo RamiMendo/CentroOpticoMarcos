@@ -64,9 +64,9 @@ public class CristalsController {
 		return ResponseEntity.noContent().build();
 	}
 
-	@PutMapping(produces="application/json")
+	@PutMapping(consumes="application/json")
 	@Operation(summary="Permite modificar un cristal", description="Debe enviar el objeto a modificar, no se puede modificar el id", tags= {"Cristales"})
-	private @ResponseBody Cristal updateCristal(Cristal cristal) {
+	private @ResponseBody Cristal updateCristal(@RequestBody Cristal cristal) {
 		return cristalService.updateCristal(cristal);
 	}
 
