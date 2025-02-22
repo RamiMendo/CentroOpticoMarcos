@@ -35,7 +35,7 @@ public class ClientesController {
 	@GetMapping(path = "/paginado")
 	@Operation(summary="Devuelve un listado de Clientes", description="No tiene parámetros de entrada, está paginada y devuelve todos los clientes de bd", tags= {"Clientes"})
 	private ResponseEntity<Page<Cliente>> getListaClientesPaginado(@RequestParam Integer page, @RequestParam Integer size) {
-		Pageable pagina = PageRequest.of(page, size);
+		Pageable pagina = PageRequest.of(page, size, Sort.by("id").ascending());
 		Page<Cliente> clientePage = clienteService.getListaCliente(pagina);
 		return new ResponseEntity<>(clientePage, HttpStatus.OK);
 	}
