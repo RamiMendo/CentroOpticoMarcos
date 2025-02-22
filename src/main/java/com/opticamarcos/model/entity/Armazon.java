@@ -24,7 +24,7 @@ public class Armazon {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="id_armazon")
-	private Integer idArmazon;
+	private Integer id;
 
 	@Column(nullable = false, length = 80)
 	private String nombre;
