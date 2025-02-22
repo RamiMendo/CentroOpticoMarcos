@@ -73,9 +73,9 @@ public class ArmazonsController {
 		return ResponseEntity.noContent().build();
 	}
 
-	@PutMapping(path="/", produces="application/json")
+	@PutMapping(consumes="application/json")
 	@Operation(summary="Permite modificar un armazon", description="Debe enviar el objeto a modificar, no se puede modificar el id", tags= {"Armazones"})
-	public @ResponseBody Armazon updateArmazon(Armazon armazon) {
+	public @ResponseBody Armazon updateArmazon(@RequestBody Armazon armazon) {
 		return armazonService.updateArmazon(armazon);
 	}
 
