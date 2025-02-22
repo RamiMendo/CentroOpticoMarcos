@@ -26,11 +26,11 @@ public class ClientesController {
 	@Autowired
 	private ClienteService clienteService;
 
-//	@GetMapping
-//	@Operation(summary="Devuelve un listado de Clientes", description="No tiene parámetros de entrada, no está paginada y devuelve todos los clientes de bd", tags= {"Clientes"})
-//	private @ResponseBody List<Cliente> getListaClientes() {
-//		return clienteService.getListaCliente();
-//	}
+	@GetMapping
+	@Operation(summary="Devuelve un listado de Clientes", description="No tiene parámetros de entrada, no está paginada y devuelve todos los clientes de bd", tags= {"Clientes"})
+	private @ResponseBody List<Cliente> getListaClientes() {
+		return clienteService.listaClientes();
+	}
 
 	@GetMapping(path = "/paginado")
 	@Operation(summary="Devuelve un listado de Clientes", description="No tiene parámetros de entrada, está paginada y devuelve todos los clientes de bd", tags= {"Clientes"})
