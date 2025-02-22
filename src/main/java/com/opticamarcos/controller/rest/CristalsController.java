@@ -3,11 +3,13 @@ package com.opticamarcos.controller.rest;
 import java.util.List;
 
 import com.opticamarcos.exceptions.CustomException;
+import com.opticamarcos.model.dto.CristalDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -51,8 +53,8 @@ public class CristalsController {
 
 	@PostMapping(consumes="application/json")
 	@Operation(summary="Agrega un cristal", description="Debe enviar el objeto cristal a ingresar", tags= {"Cristales"})
-	private @ResponseBody Cristal addCristal(@RequestBody Cristal cristal) {
-		return cristalService.addCristal(cristal);
+	private @ResponseBody Cristal addCristal(@RequestBody CristalDTO cristalDTO) {
+		return cristalService.addCristal(cristalDTO);
 	}
 
 	@DeleteMapping(produces="application/json")

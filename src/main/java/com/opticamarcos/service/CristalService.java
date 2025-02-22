@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import com.opticamarcos.exceptions.CustomException;
+import com.opticamarcos.mapper.CristalMapper;
+import com.opticamarcos.model.dto.CristalDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,6 +20,9 @@ public class CristalService {
 
 	@Autowired
 	private CristalRepository cristalRepository;
+
+	@Autowired
+	private CristalMapper cristalMapper;
 
 	public List<Cristal> getAllCristales(){
 		return cristalRepository.findAll();
@@ -35,7 +40,8 @@ public class CristalService {
 		return cristalRepository.findByNombre(nombre).orElse(null);
 	}
 	
-	public Cristal addCristal(Cristal cristal) {
+	public Cristal addCristal(CristalDTO cristalDTO) {
+		Cristal cristal = cristalMapper.dtoToEntity(cristalDTO);
 		return cristalRepository.save(cristal);
 	}
 	
