@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,6 +44,12 @@ public class ClientesController {
 	@Operation(summary="Devuelve un cliente apartir de ID ingresado", description="Tiene parámetros de entrada, devuelve el cliente a partir del ID ingresado", tags= {"Clientes"})
 	private @ResponseBody Cliente getClienteByID(@RequestParam Integer id) throws CustomException {
 		return clienteService.findById(id);
+	}
+
+	@GetMapping(path = "/findByNombre", produces = MediaType.APPLICATION_JSON_VALUE)
+	@Operation(summary = "", description = "", tags = {"Clientes"})
+	private @ResponseBody Cliente getClienteByName(@RequestParam String nombre) throws CustomException {
+		return clienteService.findByNombre(nombre);
 	}
 
 	@GetMapping(path = "/findSinFicha")

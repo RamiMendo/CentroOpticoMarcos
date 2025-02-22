@@ -9,8 +9,12 @@ import org.springframework.stereotype.Repository;
 
 import com.opticamarcos.model.entity.Cliente;
 
+import java.util.Optional;
+
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente,Integer>{
+
+    Optional<Cliente> findByNombre(String nombre);
 
     @Query(value = "SELECT SUM(Saldo) FROM Fichas WHERE id_cliente = :id ",nativeQuery = true)
     Double getSaldoCliente(@Param("id") Integer id);

@@ -34,6 +34,10 @@ public class ClienteService {
 		return clienteRepository.findById(idCliente).orElse(null);
 	}
 
+	public Cliente findByNombre(String nombre) throws CustomException{
+		return clienteRepository.findByNombre(nombre).orElse(null);
+	}
+
 	public Page<Cliente> findAllNoTieneFichas(Pageable pageable){
 		return clienteRepository.findAllNoTieneFichas(pageable);
 	}
