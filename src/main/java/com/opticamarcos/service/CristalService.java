@@ -30,6 +30,10 @@ public class CristalService {
 	public Cristal findById(Integer idCristal) throws CustomException {
 		return cristalRepository.findById(idCristal).orElse(null);
 	}
+
+	public Cristal findByNombre(String nombre) throws CustomException{
+		return cristalRepository.findByNombre(nombre).orElse(null);
+	}
 	
 	public Cristal addCristal(Cristal cristal) {
 		return cristalRepository.save(cristal);

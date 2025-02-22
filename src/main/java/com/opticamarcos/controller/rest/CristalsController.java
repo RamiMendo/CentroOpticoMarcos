@@ -43,7 +43,13 @@ public class CristalsController {
 		return cristalService.findById(id);
 	}
 
-	@PostMapping(path = "/save", consumes="application/json")
+	@GetMapping(path = "/findByNombre", produces = MediaType.APPLICATION_JSON_VALUE)
+	@Operation(summary = "", description = "", tags = {"Cristales"})
+	private @ResponseBody Cristal getCristalByNombre(@RequestParam String nombre) throws CustomException{
+		return cristalService.findByNombre(nombre);
+	}
+
+	@PostMapping(consumes="application/json")
 	@Operation(summary="Agrega un cristal", description="Debe enviar el objeto cristal a ingresar", tags= {"Cristales"})
 	private @ResponseBody Cristal addCristal(@RequestBody Cristal cristal) {
 		return cristalService.addCristal(cristal);
