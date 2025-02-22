@@ -7,6 +7,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,6 +46,12 @@ public class ArmazonsController {
 	@Operation(summary="Devuelve un armazon apartir de ID ingresado", description="Tiene parámetros de entrada y devuelve el armazon a partir del ID ingresado", tags= {"Armazones"})
 	private @ResponseBody Armazon getArmazonById(@RequestParam Integer id) throws CustomException {
 		return armazonService.findById(id);
+	}
+
+	@GetMapping(path = "/findByNombre", produces = MediaType.APPLICATION_JSON_VALUE)
+	@Operation(summary = "", description = "", tags = {"Armazones"})
+	private @ResponseBody Armazon getArmazonByNombre(@RequestParam String nombre) throws CustomException{
+		return armazonService.findByNombre(nombre);
 	}
 
 	@GetMapping(path = "/findByPrecio", produces = "application/json")

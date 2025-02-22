@@ -36,6 +36,10 @@ public class ArmazonService {
 		return armazonRepository.findById(id).orElse(null);
 	}
 
+	public Armazon findByNombre(String nombre) throws CustomException{
+		return armazonRepository.findByNombre(nombre).orElse(null);
+	}
+
 	public List<Armazon> findArmazonesByPrecio(Integer currentPage, Double regularDesde, Double regularHasta) {
 		return armazonRepository.findArmazonesByPrecio(currentPage, regularDesde, regularHasta);
 	}

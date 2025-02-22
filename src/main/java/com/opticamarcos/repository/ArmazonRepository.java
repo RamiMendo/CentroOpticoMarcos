@@ -6,9 +6,12 @@ import org.springframework.stereotype.Repository;
 import com.opticamarcos.model.entity.Armazon;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ArmazonRepository extends JpaRepository<Armazon, Integer>, ArmazonRepositoryCustom {
+
+    Optional<Armazon> findByNombre(String nombre);
 
     //CUSTOM DERIVED QUERY
     List<Armazon> findArmazonesByPrecio(Integer currentPage, Double regularDesde, Double regularHasta);
