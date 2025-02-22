@@ -24,7 +24,7 @@ public class Cristal {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="id_cristal")
-	private Integer idCristal;
+	private Integer id;
 
 	@Column(nullable = false, length = 50)
 	private String nombre;
