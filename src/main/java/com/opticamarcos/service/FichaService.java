@@ -127,13 +127,11 @@ public class FichaService {
 		fichaRepository.updateSaldoCero(id);
 	}
 
-	public List<Ficha> getFichasByFiltro(LocalDate fechaDesde, LocalDate fechaHasta, Double totalDesde, Double totalHasta, Integer estaSeniado, Integer estaPago){
-        return fichaRepository.getFichasByFiltro(fechaDesde, fechaHasta, totalDesde, totalHasta, estaSeniado, estaPago);
+	public Page<Ficha> getFichasByFiltro(Pageable pageable, LocalDate fechaDesde, LocalDate fechaHasta, Double totalDesde, Double totalHasta, Integer estaSeniado, Integer estaPago){
+        return fichaRepository.getFichasByFiltro(pageable,fechaDesde, fechaHasta, totalDesde, totalHasta, estaSeniado, estaPago);
 	}
 
-	public List<Ficha> getAllFichasByidCliente(Integer idCliente){
-		return fichaRepository.findAllByidCliente(idCliente);
-	}
+
 
 	public Map<Integer, Integer> getTotalPorMes(Integer mes, Integer anio, Boolean esPesos){
 		List<Ficha> fichas = fichaRepository.findAll();

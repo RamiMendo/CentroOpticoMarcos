@@ -23,7 +23,7 @@ public interface FichaRepository extends JpaRepository<Ficha,Integer>, FichaRepo
       List<Ficha> findAllByidCliente(@Param("idCliente") Integer idCliente);
 
       //DERIVED QUERY
-      List<Ficha> getFichasByFiltro(LocalDate fechaDesde, LocalDate fechaHasta, Double totalDesde, Double totalHasta, Integer estaSeniado, Integer estaPago);
+      Page<Ficha> getFichasByFiltro(Pageable pageable, LocalDate fechaDesde, LocalDate fechaHasta, Double totalDesde, Double totalHasta, Integer estaSeniado, Integer estaPago);
 
       @Query(value = "SELECT COUNT(*) FROM Fichas WHERE id_cliente = :idCliente", nativeQuery = true)
       Integer tieneFicha(Integer idCliente);
