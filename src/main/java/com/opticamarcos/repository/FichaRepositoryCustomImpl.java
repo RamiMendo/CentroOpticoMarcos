@@ -3,14 +3,21 @@ package com.opticamarcos.repository;
 import com.opticamarcos.model.entity.Ficha;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class FichaRepositoryCustomImpl implements FichaRepositoryCustom{
 
@@ -18,7 +25,7 @@ public class FichaRepositoryCustomImpl implements FichaRepositoryCustom{
     private EntityManager entityManager;
 
     @Override
-    public List<Ficha> getFichasByFiltro(LocalDate fechaDesde, LocalDate fechaHasta, Double totalDesde, Double totalHasta, Integer estaSeniado, Integer estaPago) {
+    public Page<Ficha> getFichasByFiltro(Pageable pageable, LocalDate fechaDesde, LocalDate fechaHasta, Double totalDesde, Double totalHasta, Integer estaSeniado, Integer estaPago) {
 
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Ficha> query = criteriaBuilder.createQuery(Ficha.class);
@@ -48,6 +55,14 @@ public class FichaRepositoryCustomImpl implements FichaRepositoryCustom{
 
         query.select(root).where(criteriaBuilder.and(predicates.toArray(new Predicate[predicates.size()])));
 
-        return entityManager.createQuery(query).getResultList();
+        TypedQuery<Ficha> typedQuery = entityManager.createQuery(query);
+        int total = typedQuery.getResultList().size();
+
+        List<Ficha> listaFichas = typedQuery
+                .setFirstResult((int) pageable.getOffset())
+                .setMaxResults(pageable.getPageSize())
+                .getResultList();
+
+        return new PageImpl<>(listaFichas, pageable, total);
     }
 }
