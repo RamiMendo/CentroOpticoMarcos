@@ -9,6 +9,7 @@ import java.util.*;
 import com.opticamarcos.exceptions.CustomException;
 import com.opticamarcos.mapper.FichaMapper;
 import com.opticamarcos.model.dto.FichaDTO;
+import com.opticamarcos.model.dto.LenteDTO;
 import com.opticamarcos.model.dto.MedidaDTO;
 import com.opticamarcos.model.entity.Lente;
 import com.opticamarcos.model.entity.Medida;
@@ -20,7 +21,6 @@ import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.opticamarcos.model.entity.Ficha;
@@ -31,13 +31,10 @@ public class FichaService {
 
 	@Autowired
 	private FichaRepository fichaRepository;
-
 	@Autowired
 	private ClienteRepository clienteRepository;
-
 	@Autowired
 	private LenteRepository lenteRepository;
-
 	@Autowired
 	private MedidaRepository medidaRepository;
 
@@ -101,18 +98,21 @@ public class FichaService {
 	public Ficha updateFicha(@NotNull Ficha ficha) {
 		Integer nuevoTotal = 0;
 
+		Set<Lente> lentes = new HashSet<>();
+
 		for (Lente lente: ficha.getLentes()) {
 			for (Medida medida: lente.getMedidasLentes()){
 				nuevoTotal = nuevoTotal + medida.getPrecio();
 				medidaRepository.save(medida);
 			}
 			if (lente.getArmazon()!=null) nuevoTotal = nuevoTotal + lente.getArmazon().getPrecio();
-			lenteRepository.save(lente);
+			lentes.add(lenteRepository.save(lente));
 		}
 
 		ficha.setTotal(nuevoTotal);
 		ficha.setSaldo(nuevoTotal - ficha.getSenia());
-		fichaRepository.save(ficha);
+		ficha.setLentes(lentes);
+		return fichaRepository.save(ficha);
 	}
 
 	@Transactional
