@@ -179,14 +179,13 @@ public class FichaService {
 				if (ficha.getFecha().getMonthValue() == i)
 					for (Lente lente : ficha.getLentes()) {
 						if (lente.getArmazon() == null) continue;
-						if (!totalArmazon.containsKey(lente.getArmazon().getIdArmazon())) {
-							totalArmazon.put(lente.getArmazon().getIdArmazon(), 1);
+						if (!totalArmazon.containsKey(lente.getArmazon().getId())) {
+							totalArmazon.put(lente.getArmazon().getId(), 1);
 						} else {
-							Integer valorAnterior = totalArmazon.get(lente.getArmazon().getIdArmazon());
-							totalArmazon.replace(lente.getArmazon().getIdArmazon(), valorAnterior, valorAnterior + 1);
+							Integer valorAnterior = totalArmazon.get(lente.getArmazon().getId());
+							totalArmazon.replace(lente.getArmazon().getId(), valorAnterior, valorAnterior + 1);
 						}
 					}
-
 			}
 
 			if (i == mes) break;
