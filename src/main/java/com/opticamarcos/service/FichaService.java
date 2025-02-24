@@ -58,13 +58,13 @@ public class FichaService {
 		Ficha ficha = findById(idFicha);
 
 		if (!ficha.getEstaImpreso()||sobreescribir){
-			if(!sobreescribir)
+			if(!ficha.getEstaImpreso())
 				fichaRepository.updateImpresion(idFicha);
 
 			ficha.escribirPDF();
 		}
 
-		File archivoPDF = new File("C:\\RAMIRO\\Programacion\\Java\\Proyectos\\CentroOpticoMarcos\\src\\main\\resources\\archivos\\Ficha-" + idFicha + ".pdf");
+		File archivoPDF = new File("C:\\CentroOpticoMarcos\\recursos\\fichas\\FICHA-" + idFicha + ".pdf");
 
 		if (!archivoPDF.exists())
 			throw new FileNotFoundException("NO SE ENCONTRO EL ARCHIVO PARA LA FICHA " + idFicha);
