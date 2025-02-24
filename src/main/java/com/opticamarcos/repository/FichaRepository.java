@@ -20,7 +20,13 @@ public interface FichaRepository extends JpaRepository<Ficha,Integer>, FichaRepo
       Page<Ficha> findAllByFechas(Pageable pageable, LocalDate fechaDesde, LocalDate fechaHasta);
 
       @Query(value = "SELECT * FROM Fichas WHERE id_cliente = :idCliente", nativeQuery = true)
-      List<Ficha> findAllByidCliente(@Param("idCliente") Integer idCliente);
+      List<Ficha> findAllByCliente(@Param("idCliente") Integer idCliente);
+
+      @Query(value = "SELECT DISTINCT F.* FROM Fichas F, Fichas_Lentes FL, Lentes L WHERE F.id_ficha = FL.id_ficha AND FL.id_lente = L.id_lente AND L.id_armazon = :idArmazon ;", nativeQuery = true)
+      List<Ficha> findAllByArmazon(@Param("idArmazon") Integer idArmazon);
+
+      @Query(value = "SELECT DISTINCT F.* FROM Fichas F, Fichas_Lentes FL, Lentes L, Lentes_Medidas LM, Medidas M WHERE F.id_ficha = FL.id_ficha AND FL.id_lente = LM.id_lente AND LM.id_medida = M.id_medida AND M.id_cristal = :idCristal ;", nativeQuery = true)
+      List<Ficha> findAllByCristal(@Param("idCristal") Integer idCristal);
 
       //DERIVED QUERY
       Page<Ficha> getFichasByFiltro(Pageable pageable, LocalDate fechaDesde, LocalDate fechaHasta, Double totalDesde, Double totalHasta, Integer estaSeniado, Integer estaPago);

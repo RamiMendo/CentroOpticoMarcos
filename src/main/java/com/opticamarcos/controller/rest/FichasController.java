@@ -73,7 +73,23 @@ public class FichasController {
             description = "Debe enviar id del cliente",
             tags = {"Fichas"})
     private @ResponseBody List<Ficha> getAllFichasByCliente(@RequestParam Integer idCliente) {
-        return fichaService.getAllFichasByidCliente(idCliente);
+        return fichaService.getAllFichasByCliente(idCliente);
+    }
+
+    @GetMapping(path = "/findByArmazon", produces = "application/json")
+    @Operation(summary = "Busca todas las fichas a partir del id del armazon",
+            description = "Debe enviar id del armazon",
+            tags = {"Fichas"})
+    private @ResponseBody List<Ficha> getAllFichasByArmazon(@RequestParam Integer idArmazon) {
+        return fichaService.getAllFichasByArmazon(idArmazon);
+    }
+
+    @GetMapping(path = "/findByCristal", produces = "application/json")
+    @Operation(summary = "Busca todas las fichas a partir del id del cristal",
+            description = "Debe enviar id del cristal",
+            tags = {"Fichas"})
+    private @ResponseBody List<Ficha> getAllFichasByCristal(@RequestParam Integer idCristal) {
+        return fichaService.getAllFichasByCristal(idCristal);
     }
 
     @GetMapping(path = "/download")

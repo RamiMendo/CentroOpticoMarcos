@@ -134,7 +134,17 @@ public class FichaService {
         return fichaRepository.getFichasByFiltro(pageable,fechaDesde, fechaHasta, totalDesde, totalHasta, estaSeniado, estaPago);
 	}
 
+	public List<Ficha> getAllFichasByCliente(Integer idCliente){
+		return fichaRepository.findAllByCliente(idCliente);
+	}
 
+	public List<Ficha> getAllFichasByArmazon(Integer idArmazon){
+		return fichaRepository.findAllByArmazon(idArmazon);
+	}
+
+	public List<Ficha> getAllFichasByCristal(Integer idCristal){
+		return fichaRepository.findAllByCristal(idCristal);
+	}
 
 	public Map<Integer, Integer> getTotalPorMes(Integer mes, Integer anio, Boolean esPesos){
 		List<Ficha> fichas = fichaRepository.findAll();
