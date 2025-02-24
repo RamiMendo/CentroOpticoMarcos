@@ -33,7 +33,11 @@ public class FichaRepositoryCustomImpl implements FichaRepositoryCustom{
 
         List<Predicate> predicates = new ArrayList<>();
         predicates.add(criteriaBuilder.between(root.get("fecha"), fechaDesde, fechaHasta));
-        predicates.add(criteriaBuilder.between(root.get("total"), totalDesde, totalHasta));
+
+        if (!Objects.equals(totalDesde, totalHasta)){
+            predicates.add(criteriaBuilder.between(root.get("total"), totalDesde, totalHasta));
+        }
+
         //(criteriaBuilder.ge(root.get("senia"), 0) MAYOR O IGUAL
         switch (estaSeniado){
             case 1:
