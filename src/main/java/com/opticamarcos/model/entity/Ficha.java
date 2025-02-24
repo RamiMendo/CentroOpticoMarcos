@@ -21,6 +21,8 @@ import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.util.Matrix;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Data
@@ -76,6 +78,7 @@ public class Ficha implements Archivo {
 		LocalDate fecha = this.getFecha();
 		Cliente cliente = this.getCliente();
 		Set<Lente> lentes = this.getLentes();
+		Integer esBifocal = 0;
 
 		Integer[] totales = new Integer[3];
 		totales[0] = this.getSenia();
@@ -120,12 +123,12 @@ public class Ficha implements Archivo {
 			}
 
 			if (lente.getEsBifocal()){
-				dibujaPolifocal(0);
+				esBifocal = 1;
 				medidasPolifocal.addAll(lente.getMedidasLentes());
 			}
 
 			if (lente.getEsMultifocal()){
-				dibujaPolifocal(1);
+				esBifocal = 2;
 				medidasPolifocal.addAll(lente.getMedidasLentes());
 			}
 		}
@@ -139,7 +142,7 @@ public class Ficha implements Archivo {
 		escribeOjos(45,440);
 		dibujaCuadriculas(460, false, medidasCerca, preciosMedidas);
 		escribeArmazon(380, armazonCerca);
-		dibujaFinales(370, false, preciosMedidas);
+		dibujaFinales(340, false, preciosMedidas);
 
 		preciosMedidas = new Integer[2];
 
@@ -152,15 +155,16 @@ public class Ficha implements Archivo {
 		escribeOjos(45,300);
 		dibujaCuadriculas(320, false, medidasLejos, preciosMedidas);
 		escribeArmazon(240, armazonLejos);
-		dibujaFinales(230, false, preciosMedidas);
+		dibujaFinales(200, false, preciosMedidas);
 
 		preciosMedidas = new Integer[2];
 
 		contentStream.drawLine(55,225,780,225);
 
+		dibujaPolifocal(esBifocal);
 		escribeOjos(260,170);
 		dibujaCuadriculas(190, true, medidasPolifocal, preciosMedidas);
-		dibujaFinales(140, true, preciosMedidas);
+		dibujaFinales(110, true, preciosMedidas);
 
 		contentStream.drawLine(55,115,780,115);
 
@@ -168,11 +172,11 @@ public class Ficha implements Archivo {
 		preciosMedidas[0] = 0;
 		preciosMedidas[1] = 0;
 
-		dibujaFinales(15, false, preciosMedidas);
+		dibujaFinales(-15, false, preciosMedidas);
 		escribeTextoFinales(totales);
 
 		contentStream.close();
-		document.save("C:\\RAMIRO\\Programacion\\Java\\Proyectos\\CentroOpticoMarcos\\src\\main\\resources\\archivos\\Ficha-" + idFicha + ".pdf");
+		document.save("C:\\CentroOpticoMarcos\\recursos\\fichas\\FICHA-" + idFicha + ".pdf");
 		document.close();
 	}
 
@@ -235,11 +239,19 @@ public class Ficha implements Archivo {
 
 		Medida[] medida = new Medida[2];
 
-		medida[0] = medidas.stream().filter(Medida::getEsOjoDerecho).findAny().get();
-		preciosMedidas[0] = medida[0].getPrecio();
+		medida[0] = medidas.stream().filter(Medida::getEsOjoDerecho).findAny().orElse(null);
+		if (medida[0] != null){
+			preciosMedidas[0] = medida[0].getPrecio();
+		}else {
+			preciosMedidas[0] = 0;
+		}
 
-		medida[1] = medidas.stream().filter(Predicate.not(Medida::getEsOjoDerecho)).findAny().get();
-		preciosMedidas[1] = medida[1].getPrecio();
+		medida[1] = medidas.stream().filter(Predicate.not(Medida::getEsOjoDerecho)).findAny().orElse(null);
+       	if (medida[1] != null){
+			   preciosMedidas[1] = medida[1].getPrecio();
+		}else {
+			preciosMedidas[1] = 0;
+		}
 
 		Integer posX = 130;
 		Integer alto = 20;
@@ -273,10 +285,10 @@ public class Ficha implements Archivo {
 						escribeTexto(vectorTitulos[i], posX + 5, posY + 5);
 						break;
 					case 1:
-						escribeCuadricula(i,posX - 5 + vectorWidth[i],posY + 10, medida[0]);
+						if (medida[0] != null) escribeCuadricula(i,posX - 5 + vectorWidth[i],posY + 10, medida[0]);
 						break;
 					case 2:
-						escribeCuadricula(i,posX - 5 + vectorWidth[i],posY + 10, medida[1]);
+						if (medida[1] != null) escribeCuadricula(i,posX - 5 + vectorWidth[i],posY + 10, medida[1]);
 						break;
 				}
 
@@ -296,14 +308,23 @@ public class Ficha implements Archivo {
 
 	private static void escribeArmazon(Integer posY, Armazon armazon) throws IOException {
 		float anchoTexto = 0;
+		String precio = "";
+		String nombre = "";
 
-		escribeTexto("Armazon: " + armazon.getNombre(), 390, posY);
+		if (armazon != null){
+			if (armazon.getId() != null){
+				precio = String.format("%,d",armazon.getPrecio());
+				nombre = armazon.getNombre();
+			}
+		}
 
-		anchoTexto = calculaAnchoTexto(String.format("%,d",armazon.getPrecio()));
-		escribeTexto(String.format("%,d",armazon.getPrecio()), (int) (792 - anchoTexto), posY);
+		escribeTexto("Armazon: " + nombre, 390, posY);
+
+		anchoTexto = calculaAnchoTexto(precio);
+		escribeTexto(precio, (int) (792 - anchoTexto), posY);
 	}
 
-	private static void dibujaPolifocal(Integer esBifocal) throws IOException {
+	private static void dibujaPolifocal(Integer esPolifocal) throws IOException {
 		Integer posY = 170;
 		String titulo = "BIFOCAL";
 
@@ -312,11 +333,11 @@ public class Ficha implements Archivo {
 			escribeTexto(titulo, 80, posY + 3);
 
 			contentStream.addRect(60, posY, 15, 15);
-			if (i == esBifocal) {
-				contentStream.setNonStrokingColor(Color.BLACK);
+			contentStream.setNonStrokingColor(Color.BLACK);
+
+			if (i > 0 && esPolifocal == i) {
 				contentStream.fill();
 			}else{
-				contentStream.setStrokingColor(Color.BLACK);
 				contentStream.stroke();
 			}
 
@@ -332,18 +353,18 @@ public class Ficha implements Archivo {
 
 		if (esPolifocal) {
 			cantidadIteracion = 1;
-			adicionalPosY = -20;
+			adicionalPosY = 10;
 		}
 
 		contentStream.setStrokingColor(Color.BLACK);
 
-		for(int i = 0; i<cantidadIteracion; i++){
-			contentStream.addRect(735, posY,60 ,30);
+		for(int i = cantidadIteracion -1; i>=0; i--){
+			contentStream.addRect(735, posY + 30,60 ,30);
 			contentStream.stroke();
 
 			posY = posY + 30;
 
-			if (i == 2)
+			if (i == 2 )
 				continue;
 
 			if (!preciosMedidas[i].toString().equals("0")){
