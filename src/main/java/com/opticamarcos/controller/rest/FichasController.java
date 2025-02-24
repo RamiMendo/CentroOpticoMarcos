@@ -138,8 +138,8 @@ public class FichasController {
     @Operation(summary="Permite modificar un ficha",
             description="Debe enviar el objeto a modificar, no se puede modificar el id",
             tags= {"Fichas"})
-    private @ResponseBody void updateFicha(@RequestBody Ficha ficha) {
-        fichaService.updateFicha(ficha);
+    private @ResponseBody Ficha updateFicha(@RequestBody Ficha ficha) {
+        return fichaService.updateFicha(ficha);
     }
 
     @PatchMapping(path="/updatePago", produces = "application/json")

@@ -98,7 +98,7 @@ public class FichaService {
 		fichaRepository.delete(ficha);
 	}
 	
-	public void updateFicha(@NotNull Ficha ficha) {
+	public Ficha updateFicha(@NotNull Ficha ficha) {
 		Integer nuevoTotal = 0;
 
 		for (Lente lente: ficha.getLentes()) {
