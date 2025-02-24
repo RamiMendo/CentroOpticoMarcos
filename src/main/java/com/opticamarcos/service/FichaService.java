@@ -77,12 +77,15 @@ public class FichaService {
 
 	public Ficha addFicha(FichaDTO fichaDTO) {
 		Ficha ficha = fichaMapper.dtoToEntity(fichaDTO);
-		Integer total = fichaDTO.getLentes().stream()
-				.map(l -> (l.getMedidasLentes().stream()
-						.mapToInt(MedidaDTO::getPrecio)
-						.sum() + l.getArmazon().getPrecio()))
-				.mapToInt(Integer::intValue)
-				.sum();
+
+		Integer total = 0;
+		for (LenteDTO lenteDTO: fichaDTO.getLentes()) {
+			for (MedidaDTO medidaDTO: lenteDTO.getMedidasLentes()){
+				total += medidaDTO.getPrecio();
+			}
+			if (lenteDTO.getArmazon()!=null) total += lenteDTO.getArmazon().getPrecio();
+		}
+
 		ficha.setEstaImpreso(false);
 		ficha.setFecha(LocalDate.now());
 		ficha.setTotal(total);
