@@ -78,7 +78,7 @@ public class Ficha implements Archivo {
 		LocalDate fecha = this.getFecha();
 		Cliente cliente = this.getCliente();
 		Set<Lente> lentes = this.getLentes();
-		Integer esBifocal = 0;
+		Integer esPolifocal = 2;
 
 		Integer[] totales = new Integer[3];
 		totales[0] = this.getSenia();
@@ -123,12 +123,12 @@ public class Ficha implements Archivo {
 			}
 
 			if (lente.getEsBifocal()){
-				esBifocal = 1;
+				esPolifocal = 0;
 				medidasPolifocal.addAll(lente.getMedidasLentes());
 			}
 
 			if (lente.getEsMultifocal()){
-				esBifocal = 2;
+				esPolifocal = 1;
 				medidasPolifocal.addAll(lente.getMedidasLentes());
 			}
 		}
@@ -161,7 +161,7 @@ public class Ficha implements Archivo {
 
 		contentStream.drawLine(55,225,780,225);
 
-		dibujaPolifocal(esBifocal);
+		dibujaPolifocal(esPolifocal);
 		escribeOjos(260,170);
 		dibujaCuadriculas(190, true, medidasPolifocal, preciosMedidas);
 		dibujaFinales(110, true, preciosMedidas);
@@ -335,7 +335,7 @@ public class Ficha implements Archivo {
 			contentStream.addRect(60, posY, 15, 15);
 			contentStream.setNonStrokingColor(Color.BLACK);
 
-			if (i > 0 && esPolifocal == i) {
+			if (esPolifocal == i) {
 				contentStream.fill();
 			}else{
 				contentStream.stroke();
