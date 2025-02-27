@@ -54,15 +54,12 @@ public class FichaService {
 	}
 
 	@Transactional
-	public File getFichaFile(Integer idFicha, Boolean sobreescribir) throws IOException, CustomException {
+	public File getFichaFile(Integer idFicha) throws IOException, CustomException {
 		Ficha ficha = findById(idFicha);
 
-		if (!ficha.getEstaImpreso()||sobreescribir){
-			if(!ficha.getEstaImpreso())
-				fichaRepository.updateImpresion(idFicha);
+		if (!ficha.getEstaImpreso()) fichaRepository.updateImpresion(idFicha);
 
-			ficha.escribirPDF();
-		}
+		ficha.escribirPDF();
 
 		File archivoPDF = new File("C:\\CentroOpticoMarcos\\recursos\\fichas\\FICHA-" + idFicha + ".pdf");
 

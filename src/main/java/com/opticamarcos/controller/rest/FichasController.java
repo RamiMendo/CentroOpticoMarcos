@@ -62,7 +62,7 @@ public class FichasController {
             description = "Debe enviar fechas(desde-hasta), lo mismo con el total, si fue señado y pagado ",
             tags = {"Fichas"})
     private ResponseEntity<Page<Ficha>> getAllFichasByFilter(@RequestParam Integer page, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fechaDesde, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fechaHasta, @RequestParam Double totalDesde, @RequestParam Double totalHasta, @RequestParam Integer estaSeniado, @RequestParam Integer estaPago){
-        Pageable pagina = PageRequest.of(page, 19);
+        Pageable pagina = PageRequest.of(page, 18);
         Page<Ficha> fichaPage = fichaService.getFichasByFiltro(pagina, fechaDesde, fechaHasta, totalDesde, totalHasta, estaSeniado, estaPago);
 
         return new ResponseEntity<>(fichaPage, HttpStatus.OK);
@@ -94,12 +94,12 @@ public class FichasController {
 
     @GetMapping(path = "/download")
     @Operation(summary = "Busca o crea el archivo PDF de la ficha.",
-            description = "Se pasa por parametros el identificador de la ficha y si se desea sobreescribir.",
+            description = "Se pasa por parametros el identificador de la ficha.",
             tags = {"Fichas"}
     )
-    private ResponseEntity<?> getFichaFile(@RequestParam Integer id, @RequestParam Boolean sobreescribir) throws CustomException, IOException {
+    private ResponseEntity<?> getFichaFile(@RequestParam Integer id) throws CustomException, IOException {
 
-        File fichaArchivo = fichaService.getFichaFile(id, sobreescribir);
+        File fichaArchivo = fichaService.getFichaFile(id);
 
         byte[] fichaBytes = null;
         try (FileInputStream fis = new FileInputStream(fichaArchivo)) {
