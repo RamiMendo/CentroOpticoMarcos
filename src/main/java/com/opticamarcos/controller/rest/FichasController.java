@@ -62,7 +62,7 @@ public class FichasController {
             description = "Debe enviar fechas(desde-hasta), lo mismo con el total, si fue señado y pagado ",
             tags = {"Fichas"})
     private ResponseEntity<Page<Ficha>> getAllFichasByFilter(@RequestParam Integer page, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fechaDesde, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fechaHasta, @RequestParam Double totalDesde, @RequestParam Double totalHasta, @RequestParam Integer estaSeniado, @RequestParam Integer estaPago){
-        Pageable pagina = PageRequest.of(page, 18);
+        Pageable pagina = PageRequest.of(page, 15);
         Page<Ficha> fichaPage = fichaService.getFichasByFiltro(pagina, fechaDesde, fechaHasta, totalDesde, totalHasta, estaSeniado, estaPago);
 
         return new ResponseEntity<>(fichaPage, HttpStatus.OK);
