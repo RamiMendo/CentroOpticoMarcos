@@ -12,6 +12,7 @@ import com.opticamarcos.model.entity.Ficha;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface FichaRepository extends JpaRepository<Ficha,Integer>, FichaRepositoryCustom{
@@ -20,7 +21,7 @@ public interface FichaRepository extends JpaRepository<Ficha,Integer>, FichaRepo
       Page<Ficha> findAllByFechas(Pageable pageable, LocalDate fechaDesde, LocalDate fechaHasta);
 
       @Query(value = "SELECT * FROM Fichas WHERE id_cliente = :idCliente", nativeQuery = true)
-      List<Ficha> findAllByCliente(@Param("idCliente") Integer idCliente);
+      Optional<Ficha> findAllByCliente(@Param("idCliente") Integer idCliente);
 
       @Query(value = "SELECT DISTINCT F.* FROM Fichas F, Fichas_Lentes FL, Lentes L WHERE F.id_ficha = FL.id_ficha AND FL.id_lente = L.id_lente AND L.id_armazon = :idArmazon ;", nativeQuery = true)
       List<Ficha> findAllByArmazon(@Param("idArmazon") Integer idArmazon);

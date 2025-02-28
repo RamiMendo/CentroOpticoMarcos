@@ -131,8 +131,8 @@ public class FichaService {
         return fichaRepository.getFichasByFiltro(pageable,fechaDesde, fechaHasta, totalDesde, totalHasta, estaSeniado, estaPago);
 	}
 
-	public List<Ficha> getAllFichasByCliente(Integer idCliente){
-		return fichaRepository.findAllByCliente(idCliente);
+	public Ficha getAllFichasByCliente(Integer idCliente) throws CustomException {
+		return fichaRepository.findAllByCliente(idCliente).orElse(null);
 	}
 
 	public List<Ficha> getAllFichasByArmazon(Integer idArmazon){

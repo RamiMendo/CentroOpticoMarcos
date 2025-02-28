@@ -72,7 +72,7 @@ public class FichasController {
     @Operation(summary = "Busca todas las fichas a partir del id del cliente",
             description = "Debe enviar id del cliente",
             tags = {"Fichas"})
-    private @ResponseBody List<Ficha> getAllFichasByCliente(@RequestParam Integer idCliente) {
+    private @ResponseBody Ficha getAllFichasByCliente(@RequestParam Integer idCliente) throws CustomException {
         return fichaService.getAllFichasByCliente(idCliente);
     }
 
