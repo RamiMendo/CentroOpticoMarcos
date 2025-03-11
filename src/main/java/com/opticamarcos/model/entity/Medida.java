@@ -23,19 +23,19 @@ public class Medida {
 	private Integer idMedida;
 
 	@Column(nullable = false)
-	private Double esferico;
+	private String esferico;
 
 	@Column(nullable = false)
-	private Double cilindrico;
+	private String cilindrico;
 
 	@Column(nullable = false)
-	private Double eje;
+	private String eje;
 
 	@Column(nullable = false, name="distancia_intercupilar")
-	private Double distanciaIntercupilar;
+	private String distanciaIntercupilar;
 
 	@Column(nullable = false)
-	private Double altura;
+	private String altura;
 
 	@Column(nullable = false, name="es_organico")
 	private Boolean esOrganico;
